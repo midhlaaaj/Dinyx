@@ -1,0 +1,190 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "<em><strong>Don’t just walk — Make an entrance</strong></em>",
+            "heading_size": "h2"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/6138702275942223202.jpg",
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "bottom-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "left",
+        "show_text_below": false
+      }
+    },
+    "collection_list_8RLnE8": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_KCxJbA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "trending-collection"
+          }
+        },
+        "featured_collection_hBwR76": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "boots"
+          }
+        },
+        "featured_collection_88kkh7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sandals"
+          }
+        },
+        "featured_collection_KdQQ9j": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "crocs"
+          }
+        },
+        "featured_collection_GRX9im": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_KCxJbA",
+        "featured_collection_hBwR76",
+        "featured_collection_88kkh7",
+        "featured_collection_KdQQ9j",
+        "featured_collection_GRX9im"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "portrait",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-4",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "best-seller",
+        "products_to_show": 8,
+        "title": "BEST SELLER",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-4",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_ywzCxn": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_dw3wQy": {
+          "type": "heading",
+          "settings": {
+            "heading": "SHOP ALL",
+            "heading_size": "h1"
+          }
+        },
+        "text_7dH3Df": {
+          "type": "text",
+          "settings": {
+            "text": "<p><em><strong>Step into confidence. Step into class</strong></em></p>",
+            "text_style": "body"
+          }
+        },
+        "button_nUmmjX": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP",
+            "button_link": "shopify://collections/drips",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_dw3wQy",
+        "text_7dH3Df",
+        "button_nUmmjX"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/WhatsApp_Image_2026-03-02_at_1.19.11_PM.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-4",
+        "color_scheme": "scheme-4",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "collection_list_8RLnE8",
+    "featured_collection",
+    "image_with_text_ywzCxn"
+  ]
+}
