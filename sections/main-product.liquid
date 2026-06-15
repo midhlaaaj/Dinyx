@@ -298,14 +298,24 @@
       z-index: 10 !important;
     }
 
-    .dinyx-modal-close-btn:hover {
-      color: #000000 !important;
-    }
+     .dinyx-modal-close-btn:hover {
+       color: #000000 !important;
+     }
 
-    body.dinyx-modal-open .sticky-bottom-action-container {
-      display: none !important;
-    }
-  {%- endstyle -%}
+     body.dinyx-modal-open .sticky-bottom-action-container {
+       display: none !important;
+     }
+
+     .dinyx-cod-row {
+       display: flex !important;
+       gap: 1rem !important;
+       flex-wrap: wrap !important;
+     }
+     .dinyx-cod-row > .dinyx-cod-field {
+       flex: 1 1 200px !important;
+       margin-bottom: 0 !important;
+     }
+   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -916,20 +926,45 @@
                           </div>
 
                           <div class="dinyx-cod-field">
-                            <label for="dinyx-cod-address">Complete Full Address <span class="required">*</span></label>
-                            <div class="dinyx-input-wrapper">
-                              <span class="dinyx-field-icon">📍</span>
-                              <input type="text" id="dinyx-cod-address" placeholder="House No. / Building Name / Street / Area" required>
-                            </div>
-                          </div>
+                             <label for="dinyx-cod-address">Complete Full Address <span class="required">*</span></label>
+                             <div class="dinyx-input-wrapper">
+                               <span class="dinyx-field-icon">📍</span>
+                               <input type="text" id="dinyx-cod-address" placeholder="House No. / Building Name / Street / Area" required>
+                             </div>
+                           </div>
 
-                          <div class="dinyx-cod-field">
-                            <label for="dinyx-cod-landmark">Landmark (Famous Spot)</label>
-                            <div class="dinyx-input-wrapper">
-                              <span class="dinyx-field-icon">🏢</span>
-                              <input type="text" id="dinyx-cod-landmark" placeholder="Nearby School, Hospital, Shop ...">
-                            </div>
-                          </div>
+                           <div class="dinyx-cod-row" style="display: flex; gap: 1rem;">
+                             <div class="dinyx-cod-field" style="flex: 1;">
+                               <label for="dinyx-cod-city">City <span class="required">*</span></label>
+                               <div class="dinyx-input-wrapper">
+                                 <span class="dinyx-field-icon">🏙️</span>
+                                 <input type="text" id="dinyx-cod-city" placeholder="City" required>
+                               </div>
+                             </div>
+                             <div class="dinyx-cod-field" style="flex: 1;">
+                               <label for="dinyx-cod-state">State <span class="required">*</span></label>
+                               <div class="dinyx-input-wrapper">
+                                 <span class="dinyx-field-icon">🗺️</span>
+                                 <input type="text" id="dinyx-cod-state" placeholder="State" required>
+                               </div>
+                             </div>
+                           </div>
+
+                           <div class="dinyx-cod-field">
+                             <label for="dinyx-cod-pincode">Pin Code <span class="required">*</span></label>
+                             <div class="dinyx-input-wrapper">
+                               <span class="dinyx-field-icon">📮</span>
+                               <input type="text" id="dinyx-cod-pincode" placeholder="6-digit Pin Code" required pattern="[0-9]{6}">
+                             </div>
+                           </div>
+
+                           <div class="dinyx-cod-field">
+                             <label for="dinyx-cod-landmark">Landmark (Famous Spot)</label>
+                             <div class="dinyx-input-wrapper">
+                               <span class="dinyx-field-icon">🏢</span>
+                               <input type="text" id="dinyx-cod-landmark" placeholder="Nearby School, Hospital, Shop ...">
+                             </div>
+                           </div>
 
                           <!-- Coupon Code Field -->
                           <div class="dinyx-cod-field">
@@ -1632,14 +1667,20 @@
             const nameEl = document.getElementById('dinyx-cod-name');
             const phoneEl = document.getElementById('dinyx-cod-phone');
             const addressEl = document.getElementById('dinyx-cod-address');
+            const cityEl = document.getElementById('dinyx-cod-city');
+            const stateEl = document.getElementById('dinyx-cod-state');
+            const pincodeEl = document.getElementById('dinyx-cod-pincode');
             const landmarkEl = document.getElementById('dinyx-cod-landmark');
 
             const name = nameEl ? nameEl.value.trim() : '';
             const phone = phoneEl ? phoneEl.value.trim() : '';
             const address = addressEl ? addressEl.value.trim() : '';
+            const city = cityEl ? cityEl.value.trim() : '';
+            const state = stateEl ? stateEl.value.trim() : '';
+            const pincode = pincodeEl ? pincodeEl.value.trim() : '';
             const landmark = landmarkEl ? landmarkEl.value.trim() : '';
 
-            if (!name || !phone || !address) {
+            if (!name || !phone || !address || !city || !state || !pincode) {
               alert('Please fill out all required fields marked with *');
               return;
             }
@@ -1669,6 +1710,9 @@
               `- Name: ${name}\n` +
               `- Phone: ${phone}\n` +
               `- Address: ${address}\n` +
+              `- City: ${city}\n` +
+              `- State: ${state}\n` +
+              `- Pin Code: ${pincode}\n` +
               `- Landmark: ${landmark || 'N/A'}`;
 
             const waNumber = '918075356149';
@@ -1694,6 +1738,9 @@
                 nameEl.value = '';
                 phoneEl.value = '';
                 addressEl.value = '';
+                if (cityEl) cityEl.value = '';
+                if (stateEl) stateEl.value = '';
+                if (pincodeEl) pincodeEl.value = '';
                 if (landmarkEl) landmarkEl.value = '';
               }, 400);
             }, 3000);

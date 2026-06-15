@@ -849,6 +849,166 @@
     transform: rotate(45deg) !important;
   }
 
+  .dinyx-cod-card {
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 8px !important;
+    padding: 2.5rem !important;
+    background-color: #ffffff !important;
+  }
+  .dinyx-cod-title {
+    margin-top: 0 !important;
+    margin-bottom: 2rem !important;
+    font-family: 'Urbanist', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 1.8rem !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    color: #000000 !important;
+  }
+  .dinyx-cod-summary {
+    border-bottom: 1px dashed #e5e5e5 !important;
+    padding-bottom: 1.5rem !important;
+    margin-bottom: 2rem !important;
+  }
+  .dinyx-cod-summary-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-bottom: 1rem !important;
+    font-size: 1.4rem !important;
+    color: #555555 !important;
+  }
+  .dinyx-cod-summary-row span:last-child {
+    font-weight: 600 !important;
+    color: #000000 !important;
+  }
+  .dinyx-cod-summary-row.total-row {
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    margin-top: 1.5rem !important;
+    padding-top: 1.5rem !important;
+    border-top: 1px solid #e5e5e5 !important;
+    color: #000000 !important;
+  }
+  .dinyx-cod-summary-row.total-row span:last-child {
+    font-weight: 900 !important;
+    color: #000000 !important;
+  }
+  .dinyx-cod-form-fields {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+  .dinyx-cod-field {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+  }
+  .dinyx-cod-field label {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: #333333 !important;
+  }
+  .dinyx-cod-field label .required {
+    color: #ff2a5f !important;
+  }
+  .dinyx-input-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    border: 1px solid #dcdcdc !important;
+    border-radius: 4px !important;
+    padding: 0 1.2rem !important;
+    background-color: #fafafa !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  }
+  .dinyx-input-wrapper:focus-within {
+    border-color: #000000 !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 1px #000000 !important;
+  }
+  .dinyx-field-icon {
+    font-size: 1.6rem !important;
+    margin-right: 1rem !important;
+    color: #666666 !important;
+  }
+  .dinyx-input-wrapper input {
+    border: none !important;
+    background: transparent !important;
+    padding: 1.2rem 0 !important;
+    font-size: 1.4rem !important;
+    font-family: 'Urbanist', sans-serif !important;
+    width: 100% !important;
+    color: #000000 !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .dinyx-cod-button {
+    margin-top: 1rem !important;
+    padding: 1.5rem !important;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-family: 'Urbanist', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 1.5rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    transition: background-color 0.2s ease !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .dinyx-cod-button:hover {
+    background-color: #333333 !important;
+  }
+  .dinyx-cod-button:disabled {
+    background-color: #666666 !important;
+    cursor: not-allowed !important;
+  }
+  .dinyx-cod-success {
+    text-align: center !important;
+    padding: 2rem 0 !important;
+  }
+  .success-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 6rem !important;
+    height: 6rem !important;
+    border-radius: 50% !important;
+    background-color: #e8f5e9 !important;
+    color: #2e7d32 !important;
+    font-size: 3rem !important;
+    font-weight: bold !important;
+    margin-bottom: 1.5rem !important;
+  }
+  .dinyx-cod-success h4 {
+    margin: 0 0 1rem 0 !important;
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    color: #000000 !important;
+  }
+  .dinyx-cod-success p {
+    margin: 0 !important;
+    font-size: 1.4rem !important;
+    color: #555555 !important;
+    line-height: 1.5 !important;
+  }
+  .hidden {
+    display: none !important;
+  }
+  .dinyx-cod-row {
+    display: flex !important;
+    gap: 1rem !important;
+    flex-wrap: wrap !important;
+  }
+  .dinyx-cod-row > .dinyx-cod-field {
+    flex: 1 1 200px !important;
+    margin-bottom: 0 !important;
+  }
+
   body.dinyx-modal-open .sticky-bottom-action-container {
     display: none !important;
   }
@@ -966,6 +1126,31 @@
           <div class="dinyx-input-wrapper">
             <span class="dinyx-field-icon">📍</span>
             <input type="text" id="dinyx-cart-address" placeholder="House No. / Building Name / Street / Area" required>
+          </div>
+        </div>
+
+        <div class="dinyx-cod-row">
+          <div class="dinyx-cod-field">
+            <label for="dinyx-cart-city">City <span class="required">*</span></label>
+            <div class="dinyx-input-wrapper">
+              <span class="dinyx-field-icon">🏙️</span>
+              <input type="text" id="dinyx-cart-city" placeholder="City" required>
+            </div>
+          </div>
+          <div class="dinyx-cod-field">
+            <label for="dinyx-cart-state">State <span class="required">*</span></label>
+            <div class="dinyx-input-wrapper">
+              <span class="dinyx-field-icon">🗺️</span>
+              <input type="text" id="dinyx-cart-state" placeholder="State" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="dinyx-cod-field">
+          <label for="dinyx-cart-pincode">Pin Code <span class="required">*</span></label>
+          <div class="dinyx-input-wrapper">
+            <span class="dinyx-field-icon">📮</span>
+            <input type="text" id="dinyx-cart-pincode" placeholder="6-digit Pin Code" required pattern="[0-9]{6}">
           </div>
         </div>
 
@@ -1284,14 +1469,20 @@
         const nameEl = document.getElementById('dinyx-cart-name');
         const phoneEl = document.getElementById('dinyx-cart-phone');
         const addressEl = document.getElementById('dinyx-cart-address');
+        const cityEl = document.getElementById('dinyx-cart-city');
+        const stateEl = document.getElementById('dinyx-cart-state');
+        const pincodeEl = document.getElementById('dinyx-cart-pincode');
         const landmarkEl = document.getElementById('dinyx-cart-landmark');
 
         const name = nameEl ? nameEl.value.trim() : '';
         const phone = phoneEl ? phoneEl.value.trim() : '';
         const address = addressEl ? addressEl.value.trim() : '';
+        const city = cityEl ? cityEl.value.trim() : '';
+        const state = stateEl ? stateEl.value.trim() : '';
+        const pincode = pincodeEl ? pincodeEl.value.trim() : '';
         const landmark = landmarkEl ? landmarkEl.value.trim() : '';
 
-        if (!name || !phone || !address) {
+        if (!name || !phone || !address || !city || !state || !pincode) {
           alert('Please fill out all required fields marked with *');
           return;
         }
@@ -1338,6 +1529,9 @@
           `- Name: ${name}\n` +
           `- Phone: ${phone}\n` +
           `- Address: ${address}\n` +
+          `- City: ${city}\n` +
+          `- State: ${state}\n` +
+          `- Pin Code: ${pincode}\n` +
           `- Landmark: ${landmark || 'N/A'}`;
 
         const waNumber = '918075356149';
