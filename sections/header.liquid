@@ -151,7 +151,7 @@
     display: none !important;
   }
 
-  /* Make header wrapper sticky */
+  /* Make header wrapper sticky and add bottom shadow for pop */
   .section-header,
   .header-wrapper,
   .header-wrapper--border-bottom {
@@ -160,6 +160,7 @@
     z-index: 100 !important;
     background-color: rgb(var(--color-background)) !important;
     border-bottom: none !important;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08), 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   }
 
   /* Move logo to extreme left, push menu items to the right */
@@ -849,6 +850,28 @@
   }
 </style>
 
+<!-- Coupons Config Data -->
+<script type="application/json" id="dinyx-coupons-data">
+  [
+    {%- assign coupon_added = false -%}
+    {%- for i in (1..5) -%}
+      {%- assign key_code = 'coupon_code_' | append: i -%}
+      {%- assign key_type = 'coupon_type_' | append: i -%}
+      {%- assign key_value = 'coupon_value_' | append: i -%}
+      {%- assign code = settings[key_code] | strip -%}
+      {%- if code != blank -%}
+        {%- if coupon_added -%},{%- endif -%}
+        {
+          "code": {{ code | upcase | json }},
+          "type": {{ settings[key_type] | json }},
+          "value": {{ settings[key_value] | default: 0 }}
+        }
+        {%- assign coupon_added = true -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+</script>
+
 <!-- Custom Cart COD Modal Overlay -->
 <div class="dinyx-modal-overlay" id="dinyx-cart-modal-overlay">
   <div class="dinyx-modal-container">
@@ -902,6 +925,10 @@
           <span>Subtotal</span>
           <span id="dinyx-cart-subtotal">Rs. 0.00</span>
         </div>
+        <div class="dinyx-cod-summary-row" id="dinyx-cart-discount-row" style="display: none; color: #ff5a5f;">
+          <span>Discount (<span id="dinyx-cart-applied-code"></span>)</span>
+          <span id="dinyx-cart-discount">-Rs. 0.00</span>
+        </div>
         <div class="dinyx-cod-summary-row">
           <span>Shipping</span>
           <span id="dinyx-cart-shipping">Rs. 399.00</span>
@@ -946,6 +973,19 @@
           </div>
         </div>
 
+        <!-- Coupon Code Field -->
+        <div class="dinyx-cod-field">
+          <label for="dinyx-cart-coupon">Have a Coupon Code?</label>
+          <div class="dinyx-input-wrapper" style="display: flex; gap: 1rem;">
+            <span class="dinyx-field-icon">🏷️</span>
+            <input type="text" id="dinyx-cart-coupon" placeholder="Enter Coupon Code" style="flex: 1; min-width: 0;">
+            <button type="button" id="dinyx-cart-coupon-apply-btn" class="button" style="padding: 0 1.5rem; min-height: 4.5rem; margin: 0; background: #000; color: #fff; border: 1px solid #ddd; border-radius: 4px; font-size: 1.2rem; cursor: pointer;">
+              APPLY
+            </button>
+          </div>
+          <div id="dinyx-cart-coupon-message" style="margin-top: 0.5rem; font-size: 1.2rem; font-weight: 500; display: none;"></div>
+        </div>
+
         <button type="button" id="dinyx-cart-submit-btn" class="dinyx-cod-button">
           PLACE COD ORDER
         </button>
@@ -964,6 +1004,7 @@
   (function() {
     let currentCartData = null;
     let cartModified = false;
+    let appliedCartCoupon = null;
 
     function formatCartPrice(val) {
       return 'Rs. ' + val.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' INR';
@@ -973,7 +1014,32 @@
       const activeCard = document.querySelector('.dinyx-cart-shipping-card.active');
       const isFast = activeCard && activeCard.getAttribute('data-type') === 'fast';
       const shippingVal = isFast ? 399 : 0;
-      const totalVal = subtotalVal + shippingVal;
+      
+      let discountValue = 0;
+      const discountRow = document.getElementById('dinyx-cart-discount-row');
+      const discountEl = document.getElementById('dinyx-cart-discount');
+      const appliedCodeEl = document.getElementById('dinyx-cart-applied-code');
+
+      if (appliedCartCoupon) {
+        if (appliedCartCoupon.type === 'percentage') {
+          discountValue = subtotalVal * (parseFloat(appliedCartCoupon.value) / 100.0);
+        } else {
+          discountValue = parseFloat(appliedCartCoupon.value);
+        }
+        if (discountValue > subtotalVal) {
+          discountValue = subtotalVal;
+        }
+      }
+
+      if (discountValue > 0) {
+        if (discountRow) discountRow.style.display = 'flex';
+        if (appliedCodeEl) appliedCodeEl.textContent = appliedCartCoupon.code;
+        if (discountEl) discountEl.textContent = '- ' + formatCartPrice(discountValue);
+      } else {
+        if (discountRow) discountRow.style.display = 'none';
+      }
+
+      const totalVal = (subtotalVal - discountValue) + shippingVal;
       
       const shippingEl = document.getElementById('dinyx-cart-shipping');
       const totalEl = document.getElementById('dinyx-cart-total');
@@ -1073,11 +1139,56 @@
       });
     };
 
+    function initCartCouponLogic() {
+      const applyBtn = document.getElementById('dinyx-cart-coupon-apply-btn');
+      const couponInput = document.getElementById('dinyx-cart-coupon');
+      const msgEl = document.getElementById('dinyx-cart-coupon-message');
+
+      if (applyBtn && !applyBtn.hasAttribute('data-listener')) {
+        applyBtn.setAttribute('data-listener', 'true');
+        applyBtn.addEventListener('click', function() {
+          const rawCode = couponInput.value.trim().toUpperCase();
+          if (!rawCode) {
+            appliedCartCoupon = null;
+            msgEl.style.display = 'none';
+            if (currentCartData) {
+              updateCartModalTotals(currentCartData.total_price / 100.0);
+            }
+            return;
+          }
+
+          let couponsData = [];
+          try {
+            couponsData = JSON.parse(document.getElementById('dinyx-coupons-data')?.textContent || '[]');
+          } catch(e) {
+            console.error(e);
+          }
+
+          const found = couponsData.find(c => c.code === rawCode);
+          if (found) {
+            appliedCartCoupon = found;
+            msgEl.style.color = '#28a745';
+            msgEl.textContent = `Coupon applied! (${found.type === 'percentage' ? found.value + '%' : 'Rs. ' + found.value} off)`;
+            msgEl.style.display = 'block';
+          } else {
+            appliedCartCoupon = null;
+            msgEl.style.color = '#ff5a5f';
+            msgEl.textContent = 'Invalid coupon code.';
+            msgEl.style.display = 'block';
+          }
+          if (currentCartData) {
+            updateCartModalTotals(currentCartData.total_price / 100.0);
+          }
+        });
+      }
+    }
+
     function openDinyxCartModal() {
       const modalOverlay = document.getElementById('dinyx-cart-modal-overlay');
       if (!modalOverlay) return;
       
       initCartModalShipping();
+      initCartCouponLogic();
       
       if (modalOverlay.parentElement !== document.body) {
         document.body.appendChild(modalOverlay);
@@ -1208,9 +1319,15 @@
           itemsText += `- Product ${index + 1}: ${item.product_title}${variantText} x ${item.quantity} = ${formatCartPrice(itemTotalPrice)}\n`;
         });
 
+        const discountRow = document.getElementById('dinyx-cart-discount-row');
+        const isDiscountApplied = discountRow && discountRow.style.display !== 'none';
+        const discountVal = isDiscountApplied ? document.getElementById('dinyx-cart-discount').textContent.trim() : '';
+
         const waMessage = `Hello Dinyx Drips! I'd like to place a Cash on Delivery order for the following items:\n\n` +
           `${itemsText}\n` +
           `Subtotal: ${subtotalText}\n` +
+          (isDiscountApplied ? `- Discount: ${discountVal}\n` : '') +
+          (appliedCartCoupon ? `- Coupon Code: ${appliedCartCoupon.code}\n` : '') +
           `Shipping (${shippingName}): ${shippingText}\n` +
           `Total: ${totalText}\n\n` +
           `Customer Details:\n` +

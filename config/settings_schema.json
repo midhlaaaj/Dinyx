@@ -1451,5 +1451,136 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Coupon Codes (WhatsApp Checkout)",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Coupon Code 1"
+      },
+      {
+        "type": "text",
+        "id": "coupon_code_1",
+        "label": "Coupon Code 1",
+        "info": "e.g., WELCOME10"
+      },
+      {
+        "type": "select",
+        "id": "coupon_type_1",
+        "label": "Discount Type 1",
+        "options": [
+          {"value": "percentage", "label": "Percentage (%)"},
+          {"value": "flat", "label": "Flat Amount (Rs.)"}
+        ],
+        "default": "percentage"
+      },
+      {
+        "type": "number",
+        "id": "coupon_value_1",
+        "label": "Discount Value 1",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Coupon Code 2"
+      },
+      {
+        "type": "text",
+        "id": "coupon_code_2",
+        "label": "Coupon Code 2"
+      },
+      {
+        "type": "select",
+        "id": "coupon_type_2",
+        "label": "Discount Type 2",
+        "options": [
+          {"value": "percentage", "label": "Percentage (%)"},
+          {"value": "flat", "label": "Flat Amount (Rs.)"}
+        ],
+        "default": "percentage"
+      },
+      {
+        "type": "number",
+        "id": "coupon_value_2",
+        "label": "Discount Value 2",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Coupon Code 3"
+      },
+      {
+        "type": "text",
+        "id": "coupon_code_3",
+        "label": "Coupon Code 3"
+      },
+      {
+        "type": "select",
+        "id": "coupon_type_3",
+        "label": "Discount Type 3",
+        "options": [
+          {"value": "percentage", "label": "Percentage (%)"},
+          {"value": "flat", "label": "Flat Amount (Rs.)"}
+        ],
+        "default": "percentage"
+      },
+      {
+        "type": "number",
+        "id": "coupon_value_3",
+        "label": "Discount Value 3",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Coupon Code 4"
+      },
+      {
+        "type": "text",
+        "id": "coupon_code_4",
+        "label": "Coupon Code 4"
+      },
+      {
+        "type": "select",
+        "id": "coupon_type_4",
+        "label": "Discount Type 4",
+        "options": [
+          {"value": "percentage", "label": "Percentage (%)"},
+          {"value": "flat", "label": "Flat Amount (Rs.)"}
+        ],
+        "default": "percentage"
+      },
+      {
+        "type": "number",
+        "id": "coupon_value_4",
+        "label": "Discount Value 4",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Coupon Code 5"
+      },
+      {
+        "type": "text",
+        "id": "coupon_code_5",
+        "label": "Coupon Code 5"
+      },
+      {
+        "type": "select",
+        "id": "coupon_type_5",
+        "label": "Discount Type 5",
+        "options": [
+          {"value": "percentage", "label": "Percentage (%)"},
+          {"value": "flat", "label": "Flat Amount (Rs.)"}
+        ],
+        "default": "percentage"
+      },
+      {
+        "type": "number",
+        "id": "coupon_value_5",
+        "label": "Discount Value 5",
+        "default": 0
+      }
+    ]
   }
 ]
