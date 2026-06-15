@@ -160,7 +160,7 @@
     z-index: 100 !important;
     background-color: rgb(var(--color-background)) !important;
     border-bottom: none !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08), 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   }
 
   /* Move logo to extreme left, push menu items to the right */
@@ -625,8 +625,10 @@
     -webkit-backdrop-filter: blur(15px) !important;
     z-index: 100000 !important;
     display: flex !important;
-    align-items: center !important;
     justify-content: center !important;
+    align-items: flex-start !important;
+    overflow-y: auto !important;
+    padding: 3rem 1.5rem !important;
     opacity: 0 !important;
     pointer-events: none !important;
     transition: opacity 0.3s ease !important;
@@ -639,15 +641,13 @@
     background-color: #ffffff !important;
     border-radius: 12px !important;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
-    width: 90% !important;
+    width: 100% !important;
     max-width: 500px !important;
-    max-height: 85vh !important;
-    overflow-y: auto !important;
     padding: 3rem !important;
     position: relative !important;
     transform: scale(0.9) !important;
     transition: transform 0.3s ease !important;
-    margin: auto !important;
+    margin: auto 0 !important;
   }
   #dinyx-cart-modal-overlay.active .dinyx-modal-container {
     transform: scale(1) !important;

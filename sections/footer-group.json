@@ -40,7 +40,7 @@
       "custom_css": [],
       "name": "t:sections.newsletter.presets.name",
       "settings": {
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-2",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
@@ -49,7 +49,7 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-2",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": true,
