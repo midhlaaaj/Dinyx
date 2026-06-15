@@ -629,7 +629,7 @@
     justify-content: center !important;
     align-items: flex-start !important;
     overflow-y: auto !important;
-    padding: 3rem 1.5rem !important;
+    padding: 1.5rem 1rem !important;
     opacity: 0 !important;
     pointer-events: none !important;
     transition: opacity 0.3s ease !important;
@@ -644,14 +644,24 @@
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
     width: 100% !important;
     max-width: 500px !important;
-    padding: 3rem !important;
+    padding: 2rem !important;
     position: relative !important;
     transform: scale(0.9) !important;
     transition: transform 0.3s ease !important;
     margin: auto 0 !important;
+    box-sizing: border-box !important;
   }
   #dinyx-cart-modal-overlay.active .dinyx-modal-container {
     transform: scale(1) !important;
+  }
+
+  @media screen and (min-width: 750px) {
+    #dinyx-cart-modal-overlay.dinyx-modal-overlay {
+      padding: 3rem 1.5rem !important;
+    }
+    #dinyx-cart-modal-overlay .dinyx-modal-container {
+      padding: 3rem !important;
+    }
   }
   #dinyx-cart-modal-overlay .dinyx-modal-close-btn {
     position: absolute !important;
