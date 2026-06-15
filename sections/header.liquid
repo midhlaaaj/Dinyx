@@ -77,8 +77,204 @@
 </style>
 
 {%- style -%}
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+  /* Global font typography override - Urbanist for all website text */
+  body, h1, h2, h3, h4, h5, h6, p, span, a, div, li, ul, input, button, select, textarea,
+  .h0, .h1, .h2, .h3, .h4, .h5, .h6, .price, .button, .rte, .badge, .card__heading,
+  .accordion__title, .cart-count-bubble, .header__search, .localization-form, .announcement-bar, .announcement-bar__message {
+    font-family: 'Urbanist', sans-serif !important;
+  }
+
+  /* Solid luxury gold color for the brand logo - no gradient */
+  .dinyx-gradient-logo {
+    color: #BF953F !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    background-clip: initial !important;
+    text-fill-color: initial !important;
+    font-family: 'Cinzel', serif !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 2.6rem;
+    display: inline-block;
+    line-height: 1.2;
+  }
+
+  /* Navigation Link typography (bold Urbanist) */
+  .header__menu-item,
+  .list-menu__item,
+  .menu-drawer__menu-item {
+    font-family: 'Urbanist', sans-serif !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    font-size: 1.4rem !important;
+  }
+
+  /* Remove active menu item underline */
+  .header__active-menu-item,
+  .header__menu-item:focus,
+  .header__menu-item--active,
+  .list-menu__item--active {
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+
+  /* Hide third-party COD checkout app forms to prevent duplications */
+  #easy-order-form-container,
+  .easyorder-form,
+  .easy-order-form,
+  .easy-order,
+  #swift-cod-button,
+  .swift-cod-form,
+  #swift-form,
+  .swift-checkout,
+  .recod-form,
+  #recod-order-form,
+  #recod-container,
+  .cod-form-container,
+  #codForm,
+  .cod-form,
+  #cod-form,
+  .fastrr-checkout,
+  .fastrr-container,
+  #fastrr-form,
+  .cod-checkout-form,
+  .quick-order-form-container,
+  #quick-order-form,
+  .re-cod-form-container,
+  .re-cod-form,
+  .re-cod-button {
+    display: none !important;
+  }
+
+  /* Make header wrapper sticky and add bottom shadow for pop */
+  .section-header,
+  .header-wrapper,
+  .header-wrapper--border-bottom {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
+    background-color: rgb(var(--color-background)) !important;
+    border-bottom: none !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Move logo to extreme left, push menu items to the right */
+  @media screen and (min-width: 990px) {
+    .header--middle-left {
+      grid-template-columns: auto 1fr auto !important;
+      column-gap: 4rem !important;
+    }
+    .header__inline-menu {
+      margin-left: auto !important;
+      text-align: right !important;
+    }
+    .list-menu--inline {
+      justify-content: flex-end !important;
+    }
+  }
+
+  /* Style cart icon SVG to match search/profile icons */
+  .header__icon--cart {
+    position: relative !important;
+  }
+  .header__icon--cart svg {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    transform: scale(1.2) !important;
+  }
+  .header__icon--cart .cart-count-bubble {
+    bottom: 2.0rem !important;
+    left: 2.2rem !important;
+    z-index: 2 !important;
+  }
+
+  /* Reorder header icons: search (left), cart (middle), profile (right) */
+  .header__icons {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+  }
+  .header__search,
+  .header__icon--search,
+  details.search-modal {
+    order: 1 !important;
+  }
+  .header__icon--cart,
+  #cart-icon-bubble {
+    order: 2 !important;
+  }
+  .header__icon--account {
+    order: 3 !important;
+  }
+
+  /* Reorder menu links: Home (1), Shop all (2), Contact (3) */
+  .list-menu--inline {
+    display: flex !important;
+  }
+  .list-menu--inline > li {
+    display: flex !important;
+  }
+  .list-menu--inline > li:nth-child(1) {
+    order: 1 !important;
+  }
+  .list-menu--inline > li:nth-child(2) {
+    order: 3 !important; /* Move Contact to end */
+  }
+  .list-menu--inline > li:nth-child(3) {
+    order: 2 !important; /* Move Shop all to middle */
+  }
+
+  /* Spacious, premium header padding */
   .header {
-    padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    min-height: auto !important;
+  }
+
+  @media screen and (min-width: 990px) {
+    .header {
+      padding-top: 2.0rem !important;
+      padding-bottom: 2.0rem !important;
+    }
+  }
+
+  .header__heading-link {
+    padding-top: 0.2rem !important;
+    padding-bottom: 0.2rem !important;
+  }
+
+  .list-menu__item--link {
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+  }
+
+  .header__icon {
+    width: 4.0rem !important;
+    height: 4.0rem !important;
+  }
+
+  .header__icon .icon {
+    width: 2.0rem !important;
+    height: 2.0rem !important;
+  }
+
+  .header,
+  .header.page-width {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 1.5rem 3rem 1.5rem 3rem !important;
+  }
+
+  @media screen and (min-width: 990px) {
+    .header,
+    .header.page-width {
+      padding: 2.0rem 4rem 2.0rem 4rem !important;
+    }
   }
 
   .section-header {
@@ -89,13 +285,6 @@
   @media screen and (min-width: 750px) {
     .section-header {
       margin-bottom: {{ section.settings.margin_bottom }}px;
-    }
-  }
-
-  @media screen and (min-width: 990px) {
-    .header {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
 {%- endstyle -%}
@@ -152,28 +341,7 @@
         <h1 class="header__heading">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        {%- if settings.logo != blank -%}
-          <div class="header__heading-logo-wrapper">
-            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-            {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-            {{
-              settings.logo
-              | image_url: width: 600
-              | image_tag:
-                class: 'header__heading-logo motion-reduce',
-                widths: widths,
-                height: logo_height,
-                width: settings.logo_width,
-                alt: logo_alt,
-                sizes: sizes,
-                preload: true
-            }}
-          </div>
-        {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
-        {%- endif -%}
+        <span class="dinyx-gradient-logo">Dinyx Drips</span>
       </a>
       {%- if request.page_type == 'index' -%}
         </h1>
@@ -195,28 +363,7 @@
         <h1 class="header__heading">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        {%- if settings.logo != blank -%}
-          <div class="header__heading-logo-wrapper">
-            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-            {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
-            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-            {{
-              settings.logo
-              | image_url: width: 600
-              | image_tag:
-                class: 'header__heading-logo',
-                widths: widths,
-                height: logo_height,
-                width: settings.logo_width,
-                alt: logo_alt,
-                sizes: sizes,
-                preload: true
-            }}
-          </div>
-        {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
-        {%- endif -%}
+        <span class="dinyx-gradient-logo">Dinyx Drips</span>
       </a>
       {%- if request.page_type == 'index' -%}
         </h1>
@@ -286,11 +433,12 @@
       {%- endfor -%}
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-        {% if cart == empty %}
-          <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
-        {% else %}
-          <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-        {% endif %}
+        <span class="svg-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="icon icon-cart" viewBox="0 0 18 19" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.5" y="6" width="13" height="11" rx="1.5" ry="1.5"></rect>
+            <path d="M12.5 6a3.5 3.5 0 0 0-7 0"></path>
+          </svg>
+        </span>
         <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
         {%- if cart != empty -%}
           <div class="cart-count-bubble">
@@ -464,7 +612,632 @@
       "url": {{ request.origin | append: page.url | json }}
     }
   </script>
-{%- endif -%}
+
+<style>
+  #dinyx-cart-modal-overlay.dinyx-modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    z-index: 10000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s ease !important;
+  }
+  #dinyx-cart-modal-overlay.dinyx-modal-overlay.active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  #dinyx-cart-modal-overlay .dinyx-modal-container {
+    background-color: #ffffff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25) !important;
+    width: 90% !important;
+    max-width: 500px !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    padding: 3rem !important;
+    position: relative !important;
+    transform: scale(0.9) !important;
+    transition: transform 0.3s ease !important;
+  }
+  #dinyx-cart-modal-overlay.active .dinyx-modal-container {
+    transform: scale(1) !important;
+  }
+  #dinyx-cart-modal-overlay .dinyx-modal-close-btn {
+    position: absolute !important;
+    top: 1.2rem !important;
+    right: 1.5rem !important;
+    background: transparent !important;
+    border: none !important;
+    font-size: 2.6rem !important;
+    cursor: pointer !important;
+    color: #888888 !important;
+    line-height: 1 !important;
+    padding: 0.5rem !important;
+    transition: color 0.2s ease !important;
+    z-index: 10 !important;
+  }
+  #dinyx-cart-modal-overlay .dinyx-modal-close-btn:hover {
+    color: #000000 !important;
+  }
+  
+  .dinyx-cart-item {
+    display: flex !important;
+    align-items: center !important;
+    padding: 1.5rem 0 !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    position: relative !important;
+    gap: 1.5rem !important;
+  }
+  .dinyx-cart-item-image-wrapper {
+    position: relative !important;
+    width: 6.4rem !important;
+    height: 6.4rem !important;
+    flex-shrink: 0 !important;
+  }
+  .dinyx-cart-item-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    border: 1px solid #f0f0f0 !important;
+  }
+  .dinyx-cart-item-qty-badge {
+    position: absolute !important;
+    top: -0.8rem !important;
+    right: -0.8rem !important;
+    background-color: #767676 !important;
+    color: #ffffff !important;
+    border-radius: 50% !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    border: 2px solid #ffffff !important;
+    z-index: 2 !important;
+  }
+  .dinyx-cart-item-details {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.4rem !important;
+  }
+  .dinyx-cart-item-title {
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    line-height: 1.3 !important;
+  }
+  .dinyx-cart-item-variant {
+    font-size: 1.2rem !important;
+    color: #767676 !important;
+  }
+  .dinyx-cart-item-price-remove {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1.2rem !important;
+    flex-shrink: 0 !important;
+  }
+  .dinyx-cart-item-price {
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    color: #000000 !important;
+  }
+  .dinyx-cart-item-remove-btn {
+    background: transparent !important;
+    border: none !important;
+    font-size: 2rem !important;
+    cursor: pointer !important;
+    color: #aaaaaa !important;
+    line-height: 1 !important;
+    padding: 0.4rem !important;
+    transition: color 0.2s ease !important;
+  }
+  .dinyx-cart-item-remove-btn:hover {
+    color: #ff2a5f !important;
+  }
+  .dinyx-cart-shipping-selection {
+    margin-top: 1.5rem !important;
+    margin-bottom: 2rem !important;
+  }
+  .dinyx-cart-shipping-title {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: #333333 !important;
+    margin-bottom: 1rem !important;
+    display: block !important;
+  }
+  .dinyx-cart-shipping-cards {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  .dinyx-cart-shipping-card {
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 8px !important;
+    padding: 1.2rem 1.4rem !important;
+    cursor: pointer !important;
+    background-color: #ffffff !important;
+    transition: all 0.2s ease !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    user-select: none !important;
+  }
+  .dinyx-cart-shipping-card:hover {
+    border-color: #999999 !important;
+  }
+  .dinyx-cart-shipping-card.active {
+    border: 2px solid #28a745 !important;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.08) !important;
+  }
+  .dinyx-cart-shipping-info {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+  .dinyx-cart-shipping-icon {
+    font-size: 1.6rem !important;
+  }
+  .dinyx-cart-shipping-details {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.2rem !important;
+  }
+  .dinyx-cart-shipping-name {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    color: #333333 !important;
+  }
+  .dinyx-cart-shipping-days {
+    font-size: 1.1rem !important;
+    color: #767676 !important;
+  }
+  .dinyx-cart-shipping-price {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    color: #000000 !important;
+  }
+  .dinyx-cart-shipping-indicator {
+    border: 2px solid #cccccc !important;
+    border-radius: 50% !important;
+    width: 1.6rem !important;
+    height: 1.6rem !important;
+    position: relative !important;
+    transition: all 0.2s !important;
+  }
+  .dinyx-cart-shipping-card.active .dinyx-cart-shipping-indicator {
+    border-color: #28a745 !important;
+    background-color: #28a745 !important;
+  }
+  .dinyx-cart-shipping-card.active .dinyx-cart-shipping-indicator::after {
+    content: '' !important;
+    position: absolute !important;
+    left: 0.4rem !important;
+    top: 0.1rem !important;
+    width: 0.4rem !important;
+    height: 0.7rem !important;
+    border: solid white !important;
+    border-width: 0 0.2rem 0.2rem 0 !important;
+    transform: rotate(45deg) !important;
+  }
+</style>
+
+<!-- Custom Cart COD Modal Overlay -->
+<div class="dinyx-modal-overlay" id="dinyx-cart-modal-overlay">
+  <div class="dinyx-modal-container">
+    <button type="button" class="dinyx-modal-close-btn" id="dinyx-cart-modal-close">×</button>
+    
+    <div class="dinyx-cod-card" id="dinyx-cart-cod-card-wrapper">
+      <h3 class="dinyx-cod-title">Cash on Delivery Order Details</h3>
+      
+      <!-- Cart items list -->
+      <div id="dinyx-cart-modal-items" style="max-height: 250px; overflow-y: auto; margin-bottom: 2rem;">
+        <!-- Filled dynamically by JavaScript -->
+      </div>
+      
+      <!-- Shipping selection -->
+      <div class="dinyx-cart-shipping-selection">
+        <span class="dinyx-cart-shipping-title">Select Shipping Speed</span>
+        <div class="dinyx-cart-shipping-cards">
+          <div class="dinyx-cart-shipping-card active" data-type="fast">
+            <div class="dinyx-cart-shipping-info">
+              <span class="dinyx-cart-shipping-icon">⚡</span>
+              <div class="dinyx-cart-shipping-details">
+                <span class="dinyx-cart-shipping-name">Fast Delivery</span>
+                <span class="dinyx-cart-shipping-days">4 - 5 Days</span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <span class="dinyx-cart-shipping-price">Rs. 399.00</span>
+              <span class="dinyx-cart-shipping-indicator"></span>
+            </div>
+          </div>
+          
+          <div class="dinyx-cart-shipping-card" data-type="standard">
+            <div class="dinyx-cart-shipping-info">
+              <span class="dinyx-cart-shipping-icon">📦</span>
+              <div class="dinyx-cart-shipping-details">
+                <span class="dinyx-cart-shipping-name">Standard Delivery</span>
+                <span class="dinyx-cart-shipping-days">7 - 12 Days</span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <span class="dinyx-cart-shipping-price">FREE</span>
+              <span class="dinyx-cart-shipping-indicator"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing Summary -->
+      <div class="dinyx-cod-summary">
+        <div class="dinyx-cod-summary-row">
+          <span>Subtotal</span>
+          <span id="dinyx-cart-subtotal">Rs. 0.00</span>
+        </div>
+        <div class="dinyx-cod-summary-row">
+          <span>Shipping</span>
+          <span id="dinyx-cart-shipping">Rs. 399.00</span>
+        </div>
+        <div class="dinyx-cod-summary-row total-row">
+          <span>Total</span>
+          <span id="dinyx-cart-total">Rs. 0.00</span>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form id="dinyx-cart-cod-form" class="dinyx-cod-form-fields" onsubmit="return false;">
+        <div class="dinyx-cod-field">
+          <label for="dinyx-cart-name">Full Name <span class="required">*</span></label>
+          <div class="dinyx-input-wrapper">
+            <span class="dinyx-field-icon">👤</span>
+            <input type="text" id="dinyx-cart-name" placeholder="First and Last name" required>
+          </div>
+        </div>
+        
+        <div class="dinyx-cod-field">
+          <label for="dinyx-cart-phone">Mobile Number <span class="required">*</span></label>
+          <div class="dinyx-input-wrapper">
+            <span class="dinyx-field-icon">📞</span>
+            <input type="tel" id="dinyx-cart-phone" placeholder="Mobile Number" required>
+          </div>
+        </div>
+
+        <div class="dinyx-cod-field">
+          <label for="dinyx-cart-address">Complete Full Address <span class="required">*</span></label>
+          <div class="dinyx-input-wrapper">
+            <span class="dinyx-field-icon">📍</span>
+            <input type="text" id="dinyx-cart-address" placeholder="House No. / Building Name / Street / Area" required>
+          </div>
+        </div>
+
+        <div class="dinyx-cod-field">
+          <label for="dinyx-cart-landmark">Landmark (Famous Spot Nearby)</label>
+          <div class="dinyx-input-wrapper">
+            <span class="dinyx-field-icon">🏢</span>
+            <input type="text" id="dinyx-cart-landmark" placeholder="Nearby School, Hospital, Shop ...">
+          </div>
+        </div>
+
+        <button type="button" id="dinyx-cart-submit-btn" class="dinyx-cod-button">
+          PLACE COD ORDER
+        </button>
+      </form>
+
+      <div id="dinyx-cart-success-message" class="dinyx-cod-success hidden">
+        <div class="success-icon">✓</div>
+        <h4>Order Placed Successfully!</h4>
+        <p>Your Cash on Delivery order has been received. We will contact you shortly to confirm.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    let currentCartData = null;
+    let cartModified = false;
+
+    function formatCartPrice(val) {
+      return 'Rs. ' + val.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' INR';
+    }
+
+    function updateCartModalTotals(subtotalVal) {
+      const activeCard = document.querySelector('.dinyx-cart-shipping-card.active');
+      const isFast = activeCard && activeCard.getAttribute('data-type') === 'fast';
+      const shippingVal = isFast ? 399 : 0;
+      const totalVal = subtotalVal + shippingVal;
+      
+      const shippingEl = document.getElementById('dinyx-cart-shipping');
+      const totalEl = document.getElementById('dinyx-cart-total');
+      
+      if (shippingEl) {
+        shippingEl.textContent = isFast ? formatCartPrice(shippingVal) : 'Free';
+      }
+      if (totalEl) {
+        totalEl.textContent = formatCartPrice(totalVal);
+      }
+    }
+
+    function renderCartModalItems(cart) {
+      currentCartData = cart;
+      const container = document.getElementById('dinyx-cart-modal-items');
+      if (!container) return;
+      
+      if (!cart.items || cart.items.length === 0) {
+        container.innerHTML = '<p style="text-align: center; font-size: 1.4rem; color: #767676; padding: 2rem 0;">Your cart is empty.</p>';
+        document.getElementById('dinyx-cart-subtotal').textContent = formatCartPrice(0);
+        updateCartModalTotals(0);
+        return;
+      }
+      
+      let html = '';
+      cart.items.forEach(item => {
+        const itemPrice = (item.price / 100.0);
+        const itemTotalPrice = itemPrice * item.quantity;
+        const imgUrl = item.image ? item.image : '';
+        const variantTitle = item.variant_title ? item.variant_title : '';
+        
+        html += `
+          <div class="dinyx-cart-item" data-key="${item.key}">
+            <div class="dinyx-cart-item-image-wrapper">
+              <img class="dinyx-cart-item-image" src="${imgUrl}" alt="${item.product_title}" loading="lazy">
+              <span class="dinyx-cart-item-qty-badge">${item.quantity}</span>
+            </div>
+            <div class="dinyx-cart-item-details">
+              <p class="dinyx-cart-item-title">${item.product_title}</p>
+              <span class="dinyx-cart-item-variant">${variantTitle}</span>
+            </div>
+            <div class="dinyx-cart-item-price-remove">
+              <span class="dinyx-cart-item-price">${formatCartPrice(itemTotalPrice)}</span>
+              <button type="button" class="dinyx-cart-item-remove-btn" onclick="removeDinyxCartItem('${item.key}')">×</button>
+            </div>
+          </div>
+        `;
+      });
+      
+      container.innerHTML = html;
+      
+      const subtotalValue = cart.total_price / 100.0;
+      document.getElementById('dinyx-cart-subtotal').textContent = formatCartPrice(subtotalValue);
+      updateCartModalTotals(subtotalValue);
+    }
+
+    function initCartModalShipping() {
+      const savedSpeed = localStorage.getItem('dinyx-cart-shipping-speed') || 'fast'; // Default to fast
+      document.querySelectorAll('.dinyx-cart-shipping-card').forEach(card => {
+        if (card.getAttribute('data-type') === savedSpeed) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    }
+
+    window.removeDinyxCartItem = function(itemKey) {
+      const itemRow = document.querySelector(`.dinyx-cart-item[data-key="${itemKey}"]`);
+      if (itemRow) {
+        itemRow.style.opacity = '0.5';
+        itemRow.style.pointerEvents = 'none';
+      }
+      
+      fetch('/cart/change.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          id: itemKey,
+          quantity: 0
+        })
+      })
+      .then(res => res.json())
+      .then(cart => {
+        cartModified = true;
+        renderCartModalItems(cart);
+      })
+      .catch(err => {
+        console.error('Error removing item:', err);
+        if (itemRow) {
+          itemRow.style.opacity = '1';
+          itemRow.style.pointerEvents = 'auto';
+        }
+      });
+    };
+
+    function openDinyxCartModal() {
+      const modalOverlay = document.getElementById('dinyx-cart-modal-overlay');
+      if (!modalOverlay) return;
+      
+      initCartModalShipping();
+      
+      modalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      
+      const itemsContainer = document.getElementById('dinyx-cart-modal-items');
+      if (itemsContainer) {
+        itemsContainer.innerHTML = '<p style="text-align: center; font-size: 1.4rem; padding: 2rem 0;">Loading cart details...</p>';
+      }
+      
+      fetch('/cart.js')
+        .then(res => res.json())
+        .then(cart => {
+          renderCartModalItems(cart);
+        })
+        .catch(err => {
+          console.error('Error fetching cart:', err);
+          if (itemsContainer) {
+            itemsContainer.innerHTML = '<p style="text-align: center; font-size: 1.4rem; color: red; padding: 2rem 0;">Failed to load cart. Please try again.</p>';
+          }
+        });
+    }
+
+    // Intercept checkout clicks globally (Capturing Phase)
+    document.addEventListener('click', function(e) {
+      const checkoutBtn = e.target.closest('[name="checkout"], #checkout, #CartDrawer-Checkout, .cart__checkout-button');
+      if (checkoutBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Only open if cart is not empty (check using quick fetch or current data)
+        fetch('/cart.js')
+          .then(res => res.json())
+          .then(cart => {
+            if (cart.item_count > 0) {
+              openDinyxCartModal();
+            } else {
+              alert('Your cart is empty.');
+            }
+          })
+          .catch(() => {
+            openDinyxCartModal();
+          });
+      }
+    }, true);
+
+    // Click handler inside modal (Shipping speed cards, submit, close)
+    document.addEventListener('click', function(e) {
+      // Shipping card selection
+      const card = e.target.closest('.dinyx-cart-shipping-card');
+      if (card) {
+        document.querySelectorAll('.dinyx-cart-shipping-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        
+        const type = card.getAttribute('data-type');
+        localStorage.setItem('dinyx-cart-shipping-speed', type);
+        
+        if (currentCartData) {
+          updateCartModalTotals(currentCartData.total_price / 100.0);
+        }
+        return;
+      }
+
+      // Close modal
+      const closeBtn = e.target.closest('#dinyx-cart-modal-close');
+      const isOverlayClick = e.target.matches('#dinyx-cart-modal-overlay');
+      if (closeBtn || isOverlayClick) {
+        const modalOverlay = document.getElementById('dinyx-cart-modal-overlay');
+        if (modalOverlay && modalOverlay.classList.contains('active')) {
+          modalOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+          if (cartModified) {
+            window.location.reload();
+          }
+        }
+        return;
+      }
+
+      // Submit COD order
+      const submitBtn = e.target.closest('#dinyx-cart-submit-btn');
+      if (submitBtn) {
+        const form = document.getElementById('dinyx-cart-cod-form');
+        if (!form) return;
+
+        const nameEl = document.getElementById('dinyx-cart-name');
+        const phoneEl = document.getElementById('dinyx-cart-phone');
+        const addressEl = document.getElementById('dinyx-cart-address');
+        const landmarkEl = document.getElementById('dinyx-cart-landmark');
+
+        const name = nameEl ? nameEl.value.trim() : '';
+        const phone = phoneEl ? phoneEl.value.trim() : '';
+        const address = addressEl ? addressEl.value.trim() : '';
+        const landmark = landmarkEl ? landmarkEl.value.trim() : '';
+
+        if (!name || !phone || !address) {
+          alert('Please fill out all required fields marked with *');
+          return;
+        }
+
+        if (!currentCartData || !currentCartData.items || currentCartData.items.length === 0) {
+          alert('Your cart is empty.');
+          return;
+        }
+
+        submitBtn.textContent = 'PLACING ORDER...';
+        submitBtn.disabled = true;
+
+        const activeCard = document.querySelector('.dinyx-cart-shipping-card.active');
+        const isFast = activeCard && activeCard.getAttribute('data-type') === 'fast';
+        const shippingName = isFast ? 'Fast Delivery' : 'Standard Delivery';
+        const shippingVal = isFast ? 399 : 0;
+        const subtotalVal = currentCartData.total_price / 100.0;
+        const totalVal = subtotalVal + shippingVal;
+
+        const subtotalText = formatCartPrice(subtotalVal);
+        const shippingText = isFast ? formatCartPrice(shippingVal) : 'Free';
+        const totalText = formatCartPrice(totalVal);
+
+        let itemsText = '';
+        currentCartData.items.forEach((item, index) => {
+          const variantText = item.variant_title ? ` (${item.variant_title})` : '';
+          const itemPrice = (item.price / 100.0);
+          const itemTotalPrice = itemPrice * item.quantity;
+          itemsText += `- Product ${index + 1}: ${item.product_title}${variantText} x ${item.quantity} = ${formatCartPrice(itemTotalPrice)}\n`;
+        });
+
+        const waMessage = `Hello Dinyx Drips! I'd like to place a Cash on Delivery order for the following items:\n\n` +
+          `${itemsText}\n` +
+          `Subtotal: ${subtotalText}\n` +
+          `Shipping (${shippingName}): ${shippingText}\n` +
+          `Total: ${totalText}\n\n` +
+          `Customer Details:\n` +
+          `- Name: ${name}\n` +
+          `- Phone: ${phone}\n` +
+          `- Address: ${address}\n` +
+          `- Landmark: ${landmark || 'N/A'}`;
+
+        const waNumber = '918075356149';
+        const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+
+        window.open(waUrl, '_blank');
+        form.classList.add('hidden');
+        document.getElementById('dinyx-cart-success-message').classList.remove('hidden');
+        submitBtn.textContent = 'ORDER PLACED ✓';
+
+        // Clear cart in Shopify since order is placed
+        fetch('/cart/clear.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
+        })
+        .then(() => {
+          setTimeout(() => {
+            const modalOverlay = document.getElementById('dinyx-cart-modal-overlay');
+            if (modalOverlay) {
+              modalOverlay.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+            window.location.reload();
+          }, 3000);
+        })
+        .catch(err => {
+          console.error('Error clearing cart:', err);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        });
+      }
+    });
+  })();
+</script>
 
 {% schema %}
 {

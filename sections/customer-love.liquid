@@ -1,0 +1,416 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .customer-love__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+  }
+
+  .customer-love__title {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+  }
+
+  .customer-love__see-all {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+  }
+
+  .customer-love__slider {
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    padding-bottom: 1rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .customer-love__slider::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+
+  .customer-love__grid {
+    display: flex;
+    gap: 1.6rem;
+    width: max-content;
+  }
+
+  .customer-love__card {
+    width: 290px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    scroll-snap-align: start;
+  }
+
+  .customer-love__card-image-wrapper {
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+    background-color: #f5f5f5;
+  }
+
+  .customer-love__card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .customer-love__card:hover .customer-love__card-image {
+    transform: scale(1.04);
+  }
+
+  .customer-love__chat-bubbles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.6rem;
+    flex-grow: 1;
+  }
+
+  .customer-love__chat-bubble {
+    background: #f0f0f0;
+    color: #121212;
+    padding: 0.8rem 1.2rem;
+    border-radius: 14px;
+    border-top-left-radius: 2px;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    max-width: 90%;
+    word-break: break-word;
+    align-self: flex-start;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+
+  /* WhatsApp styling touch: Alternating bubbles can have whatsapp green hint or grey */
+  .customer-love__chat-bubble:nth-child(even) {
+    background: #e1f5fe; /* Soft light blue/green tint */
+  }
+
+  .customer-love__author-info {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .customer-love__author-name {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #121212;
+  }
+
+  .customer-love__author-rating {
+    display: flex;
+    gap: 2px;
+    margin: 0.2rem 0;
+  }
+
+  .customer-love__author-rating .star {
+    font-size: 1.4rem;
+    color: #ccc;
+  }
+
+  .customer-love__author-rating .star.filled {
+    color: #ffb400; /* Gold */
+  }
+
+  .customer-love__tagline {
+    font-size: 1.2rem;
+    color: #555555;
+    font-weight: 500;
+  }
+{%- endstyle -%}
+
+<div class="customer-love section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="customer-love__header">
+      <h2 class="customer-love__title {{ section.settings.heading_size }}">{{ section.settings.title | escape }}</h2>
+      {%- if section.settings.see_all_link != blank -%}
+        <a href="{{ section.settings.see_all_link }}" class="customer-love__see-all link header__menu-item">
+          {{ section.settings.see_all_text | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="customer-love__slider">
+      <div class="customer-love__grid">
+        {%- for block in section.blocks -%}
+          <div class="customer-love__card" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <div class="customer-love__card-image-wrapper">
+                <img
+                  src="{{ block.settings.image | image_url: width: 400 }}"
+                  alt="{{ block.settings.author_name | escape }}"
+                  loading="lazy"
+                  class="customer-love__card-image"
+                  width="290"
+                  height="180"
+                >
+              </div>
+            {%- endif -%}
+
+            <div class="customer-love__chat-bubbles">
+              {%- if block.settings.chat_text_1 != blank -%}
+                <div class="customer-love__chat-bubble">{{ block.settings.chat_text_1 | escape }}</div>
+              {%- endif -%}
+              {%- if block.settings.chat_text_2 != blank -%}
+                <div class="customer-love__chat-bubble">{{ block.settings.chat_text_2 | escape }}</div>
+              {%- endif -%}
+              {%- if block.settings.chat_text_3 != blank -%}
+                <div class="customer-love__chat-bubble">{{ block.settings.chat_text_3 | escape }}</div>
+              {%- endif -%}
+              {%- if block.settings.chat_text_4 != blank -%}
+                <div class="customer-love__chat-bubble">{{ block.settings.chat_text_4 | escape }}</div>
+              {%- endif -%}
+            </div>
+
+            <div class="customer-love__author-info">
+              <span class="customer-love__author-name">{{ block.settings.author_name | escape }}</span>
+              <div class="customer-love__author-rating">
+                {%- assign rating = block.settings.rating | plus: 0 -%}
+                {%- for i in (1..5) -%}
+                  {%- if i <= rating -%}
+                    <span class="star filled">★</span>
+                  {%- else -%}
+                    <span class="star">☆</span>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+              {%- if block.settings.tagline != blank -%}
+                <div class="customer-love__tagline">{{ block.settings.tagline | escape }}</div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Customer Reviews Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Customer Love"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "url",
+      "id": "see_all_link",
+      "label": "See All Link"
+    },
+    {
+      "type": "text",
+      "id": "see_all_text",
+      "label": "See All Link Text",
+      "default": "See all"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Customer Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Proof / Review Image"
+        },
+        {
+          "type": "text",
+          "id": "chat_text_1",
+          "label": "Chat Bubble Line 1",
+          "default": "Bhai shoes mast hai 🔥"
+        },
+        {
+          "type": "text",
+          "id": "chat_text_2",
+          "label": "Chat Bubble Line 2",
+          "default": "Comfortable bhi hai"
+        },
+        {
+          "type": "text",
+          "id": "chat_text_3",
+          "label": "Chat Bubble Line 3",
+          "default": "Delivery bhi fast thi"
+        },
+        {
+          "type": "text",
+          "id": "chat_text_4",
+          "label": "Chat Bubble Line 4",
+          "default": "Thanks Dinyx 🙏"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Customer Name",
+          "default": "Rohan P."
+        },
+        {
+          "type": "select",
+          "id": "rating",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 star"
+            },
+            {
+              "value": "2",
+              "label": "2 stars"
+            },
+            {
+              "value": "3",
+              "label": "3 stars"
+            },
+            {
+              "value": "4",
+              "label": "4 stars"
+            },
+            {
+              "value": "5",
+              "label": "5 stars"
+            }
+          ],
+          "default": "5",
+          "label": "Rating"
+        },
+        {
+          "type": "text",
+          "id": "tagline",
+          "label": "Tagline / Status",
+          "default": "Top notch!"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews Slider",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "author_name": "Rohan P.",
+            "chat_text_1": "Bhai shoes mast hai 🔥",
+            "chat_text_2": "Comfortable bhi hai",
+            "chat_text_3": "Delivery bhi fast thi",
+            "chat_text_4": "Thanks Dinyx 🙏",
+            "tagline": "Top notch!",
+            "rating": "5"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "author_name": "Arjun S.",
+            "chat_text_1": "Bhai shoes mast hai 🔥",
+            "chat_text_2": "Comfortable bhi hai",
+            "chat_text_3": "Delivery bhi fast thi",
+            "chat_text_4": "Thanks Dinyx",
+            "tagline": "Very comfortable!",
+            "rating": "5"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "author_name": "Vivek M.",
+            "chat_text_1": "Packaging 10/10 ✅",
+            "chat_text_2": "Delivered in just 3 days!",
+            "chat_text_3": "",
+            "chat_text_4": "",
+            "tagline": "Packaging 10/10 ✅",
+            "rating": "5"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

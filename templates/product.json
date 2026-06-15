@@ -23,6 +23,10 @@
           "type": "title",
           "settings": {}
         },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -55,6 +59,21 @@
             "show_gift_card_recipient": true
           }
         },
+        "shipping_speed": {
+          "type": "shipping_speed",
+          "settings": {
+            "fast_price": "₹399 extra",
+            "standard_price": "FREE"
+          }
+        },
+        "cod_checkout_form": {
+          "type": "cod_checkout_form",
+          "settings": {
+            "form_title": "Cash on Delivery Order Details",
+            "whatsapp_number": "918075356149",
+            "webhook_url": ""
+          }
+        },
         "share": {
           "type": "share",
           "settings": {
@@ -65,17 +84,20 @@
       "block_order": [
         "vendor",
         "title",
+        "rating",
         "price",
         "variant_picker",
         "quantity_selector",
         "description",
         "custom_liquid_aq68A3",
         "buy_buttons",
+        "shipping_speed",
+        "cod_checkout_form",
         "share"
       ],
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-1",
         "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
@@ -97,7 +119,7 @@
         "products_to_show": 4,
         "columns_desktop": 4,
         "columns_mobile": "2",
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-1",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -113,3 +135,4 @@
     "related-products"
   ]
 }
+

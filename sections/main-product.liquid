@@ -37,6 +37,258 @@
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
     }
+
+    /* Custom COD Checkout Form Styles */
+    .dinyx-cod-checkout-form-container {
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .dinyx-cod-card {
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 2.5rem;
+      background-color: #ffffff;
+    }
+
+    .dinyx-cod-title {
+      margin-top: 0;
+      margin-bottom: 2rem;
+      font-family: 'Urbanist', sans-serif !important;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #000000;
+    }
+
+    .dinyx-cod-summary {
+      border-bottom: 1px dashed #e5e5e5;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .dinyx-cod-summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      color: #555555;
+    }
+
+    .dinyx-cod-summary-row span:last-child {
+      font-weight: 600;
+      color: #000000;
+    }
+
+    .dinyx-cod-summary-row.total-row {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e5e5e5;
+      color: #000000;
+    }
+
+    .dinyx-cod-summary-row.total-row span:last-child {
+      font-weight: 900;
+      color: #000000;
+    }
+
+    .dinyx-cod-form-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .dinyx-cod-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .dinyx-cod-field label {
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #333333;
+    }
+
+    .dinyx-cod-field label .required {
+      color: #ff2a5f;
+    }
+
+    .dinyx-input-wrapper {
+      display: flex;
+      align-items: center;
+      border: 1px solid #dcdcdc;
+      border-radius: 4px;
+      padding: 0 1.2rem;
+      background-color: #fafafa;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .dinyx-input-wrapper:focus-within {
+      border-color: #000000;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 1px #000000;
+    }
+
+    .dinyx-field-icon {
+      font-size: 1.6rem;
+      margin-right: 1rem;
+      color: #666666;
+    }
+
+    .dinyx-input-wrapper input {
+      border: none !important;
+      background: transparent !important;
+      padding: 1.2rem 0 !important;
+      font-size: 1.4rem !important;
+      font-family: 'Urbanist', sans-serif !important;
+      width: 100% !important;
+      color: #000000 !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    .dinyx-input-wrapper select {
+      border: none !important;
+      background: transparent !important;
+      padding: 1.2rem 0 !important;
+      font-size: 1.4rem !important;
+      width: 100% !important;
+      color: #000000 !important;
+      outline: none !important;
+      box-shadow: none !important;
+      cursor: pointer;
+    }
+
+    .dinyx-cod-button {
+      margin-top: 1rem;
+      padding: 1.5rem !important;
+      background-color: #000000 !important;
+      color: #ffffff !important;
+      border: none !important;
+      font-family: 'Urbanist', sans-serif !important;
+      font-weight: 800 !important;
+      font-size: 1.5rem !important;
+      letter-spacing: 0.1em !important;
+      text-transform: uppercase !important;
+      cursor: pointer !important;
+      border-radius: 4px !important;
+      transition: background-color 0.2s ease !important;
+      text-align: center !important;
+      width: 100% !important;
+    }
+
+    .dinyx-cod-button:hover {
+      background-color: #333333 !important;
+    }
+
+    .dinyx-cod-button:disabled {
+      background-color: #666666 !important;
+      cursor: not-allowed !important;
+    }
+
+    .dinyx-cod-success {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .success-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+
+    .dinyx-cod-success h4 {
+      margin: 0 0 1rem 0;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #000000;
+    }
+
+    .dinyx-cod-success p {
+      margin: 0;
+      font-size: 1.4rem;
+      color: #555555;
+      line-height: 1.5;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Modal Overlay & Glassmorphism Styles */
+    .dinyx-modal-overlay {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      background-color: rgba(0, 0, 0, 0.5) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+      z-index: 10000 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      transition: opacity 0.3s ease !important;
+    }
+
+    .dinyx-modal-overlay.active {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+
+    .dinyx-modal-container {
+      background-color: #ffffff !important;
+      border-radius: 12px !important;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25) !important;
+      width: 90% !important;
+      max-width: 500px !important;
+      max-height: 90vh !important;
+      overflow-y: auto !important;
+      padding: 3rem !important;
+      position: relative !important;
+      transform: scale(0.9) !important;
+      transition: transform 0.3s ease !important;
+    }
+
+    .dinyx-modal-overlay.active .dinyx-modal-container {
+      transform: scale(1) !important;
+    }
+
+    .dinyx-modal-close-btn {
+      position: absolute !important;
+      top: 1.2rem !important;
+      right: 1.5rem !important;
+      background: transparent !important;
+      border: none !important;
+      font-size: 2.6rem !important;
+      cursor: pointer !important;
+      color: #888888 !important;
+      line-height: 1 !important;
+      padding: 0.5rem !important;
+      transition: color 0.2s ease !important;
+      z-index: 10 !important;
+    }
+
+    .dinyx-modal-close-btn:hover {
+      color: #000000 !important;
+    }
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
@@ -133,6 +385,20 @@
                     {%- endif -%}
                   </div>
                 {%- endif -%}
+                
+                <div class="dinyx-delivery-estimator">
+                  <div class="dinyx-delivery-estimator__icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="1" y="3" width="15" height="13"></rect>
+                      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                      <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                      <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
+                  </div>
+                  <div class="dinyx-delivery-estimator__text">
+                    Estimated Delivery: <strong id="dinyx-delivery-date-display">Calculating...</strong>
+                  </div>
+                </div>
                 <div {{ block.shopify_attributes }}>
                   {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
                   {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
@@ -485,44 +751,180 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
-              {%- when 'rating' -%}
-                {%- if product.metafields.reviews.rating.value != blank -%}
-                  <div class="rating-wrapper">
-                    {% liquid
-                      assign rating_decimal = 0
-                      assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
-                      if decimal >= 0.3 and decimal <= 0.7
-                        assign rating_decimal = 0.5
-                      elsif decimal > 0.7
-                        assign rating_decimal = 1
-                      endif
-                    %}
-                    <div
-                      class="rating"
-                      role="img"
-                      aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}"
-                    >
-                      <span
-                        aria-hidden="true"
-                        class="rating-star"
-                        style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
-                      ></span>
-                    </div>
-                    <p class="rating-text caption">
-                      <span aria-hidden="true">
-                        {{- product.metafields.reviews.rating.value }} /
-                        {{ product.metafields.reviews.rating.value.scale_max -}}
-                      </span>
-                    </p>
-                    <p class="rating-count caption">
-                      <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
-                      <span class="visually-hidden">
-                        {{- product.metafields.reviews.rating_count }}
-                        {{ 'accessibility.total_reviews' | t -}}
-                      </span>
-                    </p>
+              {%- when 'shipping_speed' -%}
+                <div class="dinyx-shipping-speed" {{ block.shopify_attributes }}>
+                  <div class="dinyx-shipping-speed__title-container">
+                    <span class="dinyx-shipping-speed__title">Select Shipping Speed</span>
+                    <span class="dinyx-shipping-speed__info-icon">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                      </svg>
+                    </span>
                   </div>
-                {%- endif -%}
+                  
+                  <div class="dinyx-shipping-speed__options">
+                    <div class="dinyx-shipping-card active" data-type="fast" data-days-min="4" data-days-max="5">
+                      <div class="dinyx-shipping-card__badge">RECOMMENDED</div>
+                      <div class="dinyx-shipping-card__content">
+                        <div class="dinyx-shipping-card__icon-text">
+                          <span class="dinyx-shipping-card__icon">⚡</span>
+                          <span class="dinyx-shipping-card__name">Fast Delivery</span>
+                        </div>
+                        <div class="dinyx-shipping-card__indicator">
+                          <span class="dinyx-shipping-card__check-circle"></span>
+                        </div>
+                      </div>
+                      <div class="dinyx-shipping-card__days">4 - 5 Days</div>
+                      <div class="dinyx-shipping-card__price">{{ block.settings.fast_price | escape }}</div>
+                    </div>
+                    
+                    <div class="dinyx-shipping-card" data-type="standard" data-days-min="7" data-days-max="12">
+                      <div class="dinyx-shipping-card__content">
+                        <div class="dinyx-shipping-card__icon-text">
+                          <span class="dinyx-shipping-card__icon">📦</span>
+                          <span class="dinyx-shipping-card__name">Standard Delivery</span>
+                        </div>
+                        <div class="dinyx-shipping-card__indicator">
+                          <span class="dinyx-shipping-card__check-circle"></span>
+                        </div>
+                      </div>
+                      <div class="dinyx-shipping-card__days">7 - 12 Days</div>
+                      <div class="dinyx-shipping-card__price">{{ block.settings.standard_price | escape }}</div>
+                    </div>
+                  </div>
+                  
+                  <div class="dinyx-shipping-delivery-date" id="dinyx-delivery-date-text">
+                    Loading delivery dates...
+                  </div>
+                </div>
+              {%- when 'cod_checkout_form' -%}
+                <div class="dinyx-cod-checkout-form-container" 
+                     id="dinyx-cod-checkout-form-container"
+                     data-default-price="{{ product.selected_or_first_available_variant.price | divided_by: 100.0 }}"
+                     data-currency-symbol="{{ cart.currency.symbol }}"
+                     {{ block.shopify_attributes }}>
+                  <script type="application/json" id="dinyx-variant-prices">
+                    {
+                      {%- for variant in product.variants -%}
+                        "{{ variant.id }}": {{ variant.price | divided_by: 100.0 }}{%- unless forloop.last -%},{%- endunless -%}
+                      {%- endfor -%}
+                    }
+                  </script>
+                  
+                  <!-- Modal Overlay -->
+                  <div class="dinyx-modal-overlay" id="dinyx-cod-modal-overlay">
+                    <div class="dinyx-modal-container">
+                      <button type="button" class="dinyx-modal-close-btn" id="dinyx-cod-modal-close">×</button>
+                      
+                      <div class="dinyx-cod-card" id="dinyx-cod-card-wrapper">
+                        <h3 class="dinyx-cod-title">{{ block.settings.form_title | escape }}</h3>
+                        
+                        <div class="dinyx-cod-summary">
+                          <div class="dinyx-cod-summary-row">
+                            <span>Product</span>
+                            <span id="dinyx-cod-product-name">{{ product.title | escape }}</span>
+                          </div>
+                          <div class="dinyx-cod-summary-row">
+                            <span>Selected Variant</span>
+                            <span id="dinyx-cod-variant-name">{{ product.selected_or_first_available_variant.title | escape }}</span>
+                          </div>
+                          <div class="dinyx-cod-summary-row">
+                            <span>Subtotal</span>
+                            <span id="dinyx-cod-subtotal">
+                              {{ product.selected_or_first_available_variant.price | money }}
+                            </span>
+                          </div>
+                          <div class="dinyx-cod-summary-row">
+                            <span>Shipping</span>
+                            <span id="dinyx-cod-shipping">Free</span>
+                          </div>
+                          <div class="dinyx-cod-summary-row total-row">
+                            <span>Total</span>
+                            <span id="dinyx-cod-total">
+                              {{ product.selected_or_first_available_variant.price | money }}
+                            </span>
+                          </div>
+                        </div>
+
+                        <form id="dinyx-cod-form" class="dinyx-cod-form-fields" onsubmit="return false;">
+                          <div class="dinyx-cod-field">
+                            <label for="dinyx-cod-shipping-speed-select">Shipping Speed <span class="required">*</span></label>
+                            <div class="dinyx-input-wrapper">
+                              <span class="dinyx-field-icon">🚚</span>
+                              <select id="dinyx-cod-shipping-speed-select">
+                                <option value="standard">Standard Delivery (7-12 Days) - Free</option>
+                                <option value="fast">Fast Delivery (4-5 Days) - Rs. 399.00</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="dinyx-cod-field">
+                            <label for="dinyx-cod-name">Full Name <span class="required">*</span></label>
+                            <div class="dinyx-input-wrapper">
+                              <span class="dinyx-field-icon">👤</span>
+                              <input type="text" id="dinyx-cod-name" placeholder="First and Last name" required>
+                            </div>
+                          </div>
+                          
+                          <div class="dinyx-cod-field">
+                            <label for="dinyx-cod-phone">Mobile Number <span class="required">*</span></label>
+                            <div class="dinyx-input-wrapper">
+                              <span class="dinyx-field-icon">📞</span>
+                              <input type="tel" id="dinyx-cod-phone" placeholder="Mobile Number" required>
+                            </div>
+                          </div>
+
+                          <div class="dinyx-cod-field">
+                            <label for="dinyx-cod-address">Complete Full Address <span class="required">*</span></label>
+                            <div class="dinyx-input-wrapper">
+                              <span class="dinyx-field-icon">📍</span>
+                              <input type="text" id="dinyx-cod-address" placeholder="House No. / Building Name / Street / Area" required>
+                            </div>
+                          </div>
+
+                          <div class="dinyx-cod-field">
+                            <label for="dinyx-cod-landmark">Landmark (Famous Spot)</label>
+                            <div class="dinyx-input-wrapper">
+                              <span class="dinyx-field-icon">🏢</span>
+                              <input type="text" id="dinyx-cod-landmark" placeholder="Nearby School, Hospital, Shop ...">
+                            </div>
+                          </div>
+
+                          <button type="button" id="dinyx-cod-submit-btn" class="dinyx-cod-button btn-whatsapp-order">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 2rem; height: 2rem; margin-right: 0.8rem; vertical-align: middle;">
+                              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.835-2.029c1.625.963 3.513 1.47 5.458 1.47 5.766 0 10.455-4.686 10.459-10.45 2-2.76 1.085-5.353.111-7.323-.974-1.969-2.545-3.536-4.516-4.505C16.424 2.147 14.269 1.63 12.008 1.63c-5.761 0-10.45 4.693-10.454 10.463-.002 2.012.518 3.971 1.502 5.679L2.012 21.99l4.88-1.28c.027.015.053.03.08.046-.008-.008-.016-.016-.024-.024zM18.06 14.77c-.328-.164-1.942-.958-2.242-1.069-.3-.109-.519-.164-.737.164-.219.328-.847 1.069-1.039 1.287-.192.219-.384.246-.712.083-1.077-.492-1.89-1.07-2.68-1.725-.632-.525-1.058-1.168-1.182-1.381-.124-.219-.014-.337.097-.447.1-.1.219-.255.328-.383.109-.128.146-.219.219-.364.073-.146.037-.273-.018-.383-.055-.109-.519-1.251-.712-1.716-.187-.45-.376-.388-.519-.395-.133-.006-.286-.007-.44-.007-.153 0-.404.057-.615.287-.211.23-.806.787-.806 1.92 0 1.133.824 2.222.937 2.373.113.15 1.624 2.48 3.935 3.477.55.237 1.057.414 1.417.528.552.176 1.055.15 1.453.091.442-.066 1.942-.794 2.215-1.53.273-.737.273-1.368.192-1.5-.08-.133-.296-.219-.624-.383z"/>
+                            </svg>
+                            BOOK ON WHATSAPP
+                          </button>
+                        </form>
+
+                        <div id="dinyx-cod-success-message" class="dinyx-cod-success hidden">
+                          <div class="success-icon" style="background-color: #25d366; color: white;">✓</div>
+                          <h4>Order Details Prepared!</h4>
+                          <p>We have redirected you to WhatsApp. Please send the pre-filled message in the chat to complete your booking.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {%- when 'rating' -%}
+                <div class="rating-wrapper dinyx-interactive-rating" data-product-id="{{ product.id }}" {{ block.shopify_attributes }}>
+                  <span class="rating-instruction">Rate this product:</span>
+                  <div class="rating-stars" role="slider" aria-label="Rate this product" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5">
+                    {%- for i in (1..5) -%}
+                      <span class="star-btn" data-value="{{ i }}">
+                        <svg class="icon icon-star" viewBox="0 0 24 24" width="24" height="24">
+                          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                      </span>
+                    {%- endfor -%}
+                  </div>
+                  <span class="rating-label">
+                    <span class="rating-value" id="rating-value-{{ product.id }}">5.0</span>/5
+                  </span>
+                  <span class="rating-count-text">
+                    (<span class="rating-count" id="rating-count-{{ product.id }}">12</span> reviews)
+                  </span>
+                </div>
               {%- when 'complementary' -%}
                 <product-recommendations
                   class="complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
@@ -735,6 +1137,539 @@
     <script type="application/ld+json">
       {{ product | structured_data }}
     </script>
+    
+    <script>
+      (function() {
+        const defaultRating = 5.0;
+        const defaultCount = 12;
+
+        function initRatings() {
+          const ratingContainers = document.querySelectorAll('.dinyx-interactive-rating:not([data-dinyx-initialized])');
+          ratingContainers.forEach(container => {
+            container.setAttribute('data-dinyx-initialized', 'true');
+            const productId = container.getAttribute('data-product-id');
+            if (!productId) return;
+
+            const valEl = container.querySelector('.rating-value');
+            const countEl = container.querySelector('.rating-count');
+            const stars = container.querySelectorAll('.star-btn');
+
+            let savedRating = localStorage.getItem('dinyx-rating-' + productId);
+            let userHasRated = localStorage.getItem('dinyx-has-rated-' + productId);
+
+            let rating = defaultRating;
+            let count = defaultCount;
+
+            if (userHasRated) {
+              const userRatingVal = parseFloat(savedRating) || 5.0;
+              count = defaultCount + 1;
+              rating = ((defaultRating * defaultCount) + userRatingVal) / count;
+            }
+
+            if (valEl) valEl.textContent = Number(rating).toFixed(1);
+            if (countEl) countEl.textContent = count;
+
+            stars.forEach(star => {
+              const val = parseInt(star.getAttribute('data-value'));
+              if (val <= Math.round(rating)) {
+                star.classList.add('filled');
+              } else {
+                star.classList.remove('filled');
+              }
+            });
+          });
+
+          // Sync Card Ratings
+          const cardRatings = document.querySelectorAll('.dinyx-card-rating:not([data-dinyx-initialized])');
+          cardRatings.forEach(card => {
+            card.setAttribute('data-dinyx-initialized', 'true');
+            const productId = card.getAttribute('data-product-id');
+            if (!productId) return;
+
+            const valEl = card.querySelector('.rating-value');
+            const countEl = card.querySelector('.rating-count');
+            const stars = card.querySelectorAll('.star');
+
+            let savedRating = localStorage.getItem('dinyx-rating-' + productId);
+            let userHasRated = localStorage.getItem('dinyx-has-rated-' + productId);
+
+            let rating = defaultRating;
+            let count = defaultCount;
+
+            if (userHasRated) {
+              const userRatingVal = parseFloat(savedRating) || 5.0;
+              count = defaultCount + 1;
+              rating = ((defaultRating * defaultCount) + userRatingVal) / count;
+            }
+
+            if (valEl) valEl.textContent = Number(rating).toFixed(1);
+            if (countEl) countEl.textContent = count;
+
+            stars.forEach((star, index) => {
+              if ((index + 1) <= Math.round(rating)) {
+                star.classList.add('filled');
+                star.textContent = '★';
+              } else {
+                star.classList.remove('filled');
+                star.textContent = '☆';
+              }
+            });
+          });
+        }
+
+        function calculateDeliveryDates() {
+          const dateTextEl = document.getElementById('dinyx-delivery-date-text');
+          if (!dateTextEl) return;
+
+          const activeCard = document.querySelector('.dinyx-shipping-card.active');
+          if (!activeCard) return;
+
+          const minDays = parseInt(activeCard.getAttribute('data-days-min')) || 0;
+          const maxDays = parseInt(activeCard.getAttribute('data-days-max')) || 0;
+
+          const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+          const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+          function getFormattedDate(daysToAdd) {
+            const d = new Date();
+            d.setDate(d.getDate() + daysToAdd);
+            const dayName = daysOfWeek[d.getDay()];
+            const monthName = months[d.getMonth()];
+            const dateNum = d.getDate();
+            return `${dayName}, ${monthName} ${dateNum}`;
+          }
+
+          const startFormatted = getFormattedDate(minDays);
+          const endFormatted = getFormattedDate(maxDays);
+
+          dateTextEl.textContent = `Delivered by ${startFormatted} - ${endFormatted}`;
+        }
+
+        function initShipping() {
+          const shippingBlock = document.querySelector('.dinyx-shipping-speed:not([data-dinyx-initialized])');
+          if (shippingBlock) {
+            shippingBlock.setAttribute('data-dinyx-initialized', 'true');
+            // Restore active shipping speed from localStorage
+            const savedSpeed = localStorage.getItem('dinyx-shipping-speed') || 'fast'; // Default to fast
+            shippingBlock.querySelectorAll('.dinyx-shipping-card').forEach(card => {
+              if (card.getAttribute('data-type') === savedSpeed) {
+                card.classList.add('active');
+              } else {
+                card.classList.remove('active');
+              }
+            });
+            calculateDeliveryDates();
+          }
+        }
+
+        function updateCodFormDetails() {
+          const codForm = document.querySelector('.dinyx-cod-checkout-form-container');
+          if (!codForm) return;
+
+          // 1. Get current variant ID
+          const selectedVariantIdInput = document.querySelector('input[name="id"]');
+          const selectedVariantId = selectedVariantIdInput ? selectedVariantIdInput.value : '';
+
+          // 2. Parse price JSON or get attributes
+          let subtotalValue = null;
+          const pricesJsonEl = document.getElementById('dinyx-variant-prices');
+          if (pricesJsonEl && selectedVariantId) {
+            try {
+              const variantPrices = JSON.parse(pricesJsonEl.textContent);
+              if (variantPrices[selectedVariantId] !== undefined) {
+                subtotalValue = parseFloat(variantPrices[selectedVariantId]);
+              }
+            } catch (e) {
+              console.error("Error parsing variant prices JSON", e);
+            }
+          }
+
+          // Fallback 1: Parse from page price element
+          if (subtotalValue === null || subtotalValue <= 0) {
+            const activePriceEl = document.querySelector('.price--large .price-item--last, .price--large .price-item--regular, .product__info-container .price-item--last, .product__info-container .price-item--regular, .price .price-item--last, .price .price-item--regular');
+            if (activePriceEl) {
+              const rawPriceText = activePriceEl.textContent.trim();
+              const match = rawPriceText.match(/[\d,.]+/);
+              if (match) {
+                subtotalValue = parseFloat(match[0].replace(/,/g, '')) || null;
+              }
+            }
+          }
+
+          // Fallback 2: Read data-default-price attribute if subtotal is still null or 0
+          if (subtotalValue === null || subtotalValue <= 0) {
+            const defaultPriceVal = codForm.getAttribute('data-default-price');
+            subtotalValue = parseFloat(defaultPriceVal) || 0;
+          }
+
+          // Set clean currency prefix (INR mapped to Rs. and formatted nicely with spaces)
+          let currencyPrefix = codForm.getAttribute('data-currency-symbol') || 'Rs.';
+          if (currencyPrefix === 'INR') {
+            currencyPrefix = 'Rs.';
+          }
+          if (currencyPrefix && !currencyPrefix.endsWith(' ')) {
+            currencyPrefix += ' ';
+          }
+
+          // 3. Shipping cost
+          const activeShippingCard = document.querySelector('.dinyx-shipping-card.active');
+          const isFastShipping = activeShippingCard && activeShippingCard.getAttribute('data-type') === 'fast';
+          const shippingValue = isFastShipping ? 399 : 0;
+          const totalValue = subtotalValue + shippingValue;
+
+          // Formatting function
+          function formatPrice(val, prefix) {
+            return prefix + val.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          }
+
+          const subtotalEl = document.getElementById('dinyx-cod-subtotal');
+          const shippingEl = document.getElementById('dinyx-cod-shipping');
+          const totalEl = document.getElementById('dinyx-cod-total');
+          const variantEl = document.getElementById('dinyx-cod-variant-name');
+
+          if (subtotalEl) subtotalEl.textContent = formatPrice(subtotalValue, currencyPrefix);
+          if (shippingEl) shippingEl.textContent = isFastShipping ? formatPrice(shippingValue, currencyPrefix) : 'Free';
+          if (totalEl) totalEl.textContent = formatPrice(totalValue, currencyPrefix);
+
+          const selectEl = document.getElementById('dinyx-cod-shipping-speed-select');
+          if (selectEl && activeShippingCard) {
+            selectEl.value = activeShippingCard.getAttribute('data-type');
+          }
+
+          // Update variant option text and clean up sold out/unavailable tags
+          if (variantEl && selectedVariantIdInput) {
+            let selectedOptions = [];
+            document.querySelectorAll('fieldset.product-form__input input:checked, variant-selects select').forEach(el => {
+              if (el.tagName === 'SELECT') {
+                selectedOptions.push(el.options[el.selectedIndex].text.trim());
+              } else {
+                const label = document.querySelector(`label[for="${el.id}"]`);
+                if (label) {
+                  selectedOptions.push(label.textContent.trim());
+                }
+              }
+            });
+            if (selectedOptions.length > 0) {
+              let cleanedVariantText = selectedOptions.join(' / ');
+              cleanedVariantText = cleanedVariantText
+                .replace(/Variant sold out or unavailable|sold out|unavailable|out of stock/gi, '')
+                .replace(/\s*-\s*$/, '')
+                .trim();
+              variantEl.textContent = cleanedVariantText || 'Default Title';
+            }
+          }
+        }
+
+        function initCodForm() {
+          const codForm = document.querySelector('.dinyx-cod-checkout-form-container:not([data-dinyx-initialized])');
+          if (codForm) {
+            codForm.setAttribute('data-dinyx-initialized', 'true');
+            
+            const activeShippingCard = document.querySelector('.dinyx-shipping-card.active');
+            const selectEl = document.getElementById('dinyx-cod-shipping-speed-select');
+            if (activeShippingCard && selectEl) {
+              selectEl.value = activeShippingCard.getAttribute('data-type');
+            }
+
+            if (selectEl) {
+              selectEl.addEventListener('change', function(event) {
+                const selectedVal = event.target.value;
+                const targetCard = document.querySelector(`.dinyx-shipping-card[data-type="${selectedVal}"]`);
+                if (targetCard) {
+                  targetCard.click();
+                } else {
+                  localStorage.setItem('dinyx-shipping-speed', selectedVal);
+                  updateCodFormDetails();
+                }
+              });
+            }
+
+            updateCodFormDetails();
+          }
+        }
+
+        let updateTimeout;
+        function initAll() {
+          initRatings();
+          initShipping();
+          initCodForm();
+          updateCodFormDetails();
+          
+          clearTimeout(updateTimeout);
+          updateTimeout = setTimeout(updateCodFormDetails, 100);
+        }
+
+        // 2. Global Event Delegation
+        // Click handler
+        document.addEventListener('click', function(e) {
+          // Official green WhatsApp button click (custom liquid block) or Buy It Now button click
+          const officialWaBtn = e.target.closest('.btn--buy-on-whatsapp');
+          const buyItNowBtn = e.target.closest('.shopify-payment-button') || e.target.closest('.shopify-payment-button__button');
+          if (officialWaBtn || buyItNowBtn) {
+            e.preventDefault(); // Intercept redirect
+            e.stopPropagation();
+            updateCodFormDetails(); // Ensure modal is up-to-date
+            const modalOverlay = document.getElementById('dinyx-cod-modal-overlay');
+            if (modalOverlay) {
+              modalOverlay.classList.add('active');
+              document.body.style.overflow = 'hidden'; // Lock scrolling
+            }
+            return;
+          }
+
+          // Close modal on 'x' click or background overlay click
+          const closeBtn = e.target.closest('#dinyx-cod-modal-close');
+          const isOverlayClick = e.target.matches('#dinyx-cod-modal-overlay');
+          if (closeBtn || isOverlayClick) {
+            const modalOverlay = document.getElementById('dinyx-cod-modal-overlay');
+            if (modalOverlay) {
+              modalOverlay.classList.remove('active');
+              document.body.style.overflow = ''; // Restore scrolling
+            }
+            return;
+          }
+
+          // Star button click
+          const starBtn = e.target.closest('.star-btn');
+          if (starBtn) {
+            const container = starBtn.closest('.dinyx-interactive-rating');
+            if (!container) return;
+            const productId = container.getAttribute('data-product-id');
+            if (!productId) return;
+
+            const selectedVal = parseInt(starBtn.getAttribute('data-value'));
+            localStorage.setItem('dinyx-rating-' + productId, selectedVal);
+            localStorage.setItem('dinyx-has-rated-' + productId, 'true');
+
+            const valEl = container.querySelector('.rating-value');
+            const countEl = container.querySelector('.rating-count');
+            const stars = container.querySelectorAll('.star-btn');
+
+            const newCount = defaultCount + 1;
+            const newRating = ((defaultRating * defaultCount) + selectedVal) / newCount;
+
+            if (valEl) valEl.textContent = Number(newRating).toFixed(1);
+            if (countEl) countEl.textContent = newCount;
+
+            stars.forEach(star => {
+              const val = parseInt(star.getAttribute('data-value'));
+              if (val <= Math.round(newRating)) {
+                star.classList.add('filled');
+              } else {
+                star.classList.remove('filled');
+              }
+            });
+
+            // Trigger sync to cards
+            document.querySelectorAll('.dinyx-card-rating[data-product-id="' + productId + '"]').forEach(card => {
+              const cardValEl = card.querySelector('.rating-value');
+              const cardCountEl = card.querySelector('.rating-count');
+              const cardStars = card.querySelectorAll('.star');
+              if (cardValEl) cardValEl.textContent = Number(newRating).toFixed(1);
+              if (cardCountEl) cardCountEl.textContent = newCount;
+              cardStars.forEach((star, index) => {
+                if ((index + 1) <= Math.round(newRating)) {
+                  star.classList.add('filled');
+                  star.textContent = '★';
+                } else {
+                  star.classList.remove('filled');
+                  star.textContent = '☆';
+                }
+              });
+            });
+            return;
+          }
+
+          // Shipping card click
+          const shippingCard = e.target.closest('.dinyx-shipping-card');
+          if (shippingCard) {
+            const shippingBlock = shippingCard.closest('.dinyx-shipping-speed');
+            if (!shippingBlock) return;
+            shippingBlock.querySelectorAll('.dinyx-shipping-card').forEach(c => c.classList.remove('active'));
+            shippingCard.classList.add('active');
+            
+            // Save selection to localStorage
+            const type = shippingCard.getAttribute('data-type');
+            localStorage.setItem('dinyx-shipping-speed', type);
+            
+            calculateDeliveryDates();
+            updateCodFormDetails();
+            return;
+          }
+
+          // Custom COD form Place Order Click
+          const submitBtn = e.target.closest('#dinyx-cod-submit-btn');
+          if (submitBtn) {
+            const form = document.getElementById('dinyx-cod-form');
+            if (!form) return;
+
+            const nameEl = document.getElementById('dinyx-cod-name');
+            const phoneEl = document.getElementById('dinyx-cod-phone');
+            const addressEl = document.getElementById('dinyx-cod-address');
+            const landmarkEl = document.getElementById('dinyx-cod-landmark');
+
+            const name = nameEl ? nameEl.value.trim() : '';
+            const phone = phoneEl ? phoneEl.value.trim() : '';
+            const address = addressEl ? addressEl.value.trim() : '';
+            const landmark = landmarkEl ? landmarkEl.value.trim() : '';
+
+            if (!name || !phone || !address) {
+              alert('Please fill out all required fields marked with *');
+              return;
+            }
+
+            submitBtn.textContent = 'PLACING ORDER...';
+            submitBtn.disabled = true;
+
+            const prodName = document.getElementById('dinyx-cod-product-name').textContent;
+            const varName = document.getElementById('dinyx-cod-variant-name').textContent;
+            const subtotal = document.getElementById('dinyx-cod-subtotal').textContent.trim();
+            const shipping = document.getElementById('dinyx-cod-shipping').textContent.trim();
+            const total = document.getElementById('dinyx-cod-total').textContent.trim();
+
+            const waMessage = `Hello Dinyx Drips! I'd like to place a Cash on Delivery order:\n` +
+              `- Product: ${prodName}\n` +
+              `- Variant: ${varName}\n` +
+              `- Subtotal: ${subtotal}\n` +
+              `- Shipping: ${shipping}\n` +
+              `- Total: ${total}\n\n` +
+              `Customer Details:\n` +
+              `- Name: ${name}\n` +
+              `- Phone: ${phone}\n` +
+              `- Address: ${address}\n` +
+              `- Landmark: ${landmark || 'N/A'}`;
+
+            const waNumber = '918075356149';
+            const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+
+            window.open(waUrl, '_blank');
+            form.classList.add('hidden');
+            document.getElementById('dinyx-cod-success-message').classList.remove('hidden');
+            submitBtn.textContent = 'ORDER PLACED ✓';
+
+            // Auto close modal after showing success message, then reset form
+            setTimeout(() => {
+              const modalOverlay = document.getElementById('dinyx-cod-modal-overlay');
+              if (modalOverlay) {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+              }
+              setTimeout(() => {
+                form.classList.remove('hidden');
+                document.getElementById('dinyx-cod-success-message').classList.add('hidden');
+                submitBtn.textContent = 'PLACE COD ORDER';
+                submitBtn.disabled = false;
+                nameEl.value = '';
+                phoneEl.value = '';
+                addressEl.value = '';
+                if (landmarkEl) landmarkEl.value = '';
+              }, 400);
+            }, 3000);
+          }
+        });
+
+        // Mouse hover handling for stars
+        document.addEventListener('mouseover', function(e) {
+          const starBtn = e.target.closest('.star-btn');
+          if (starBtn) {
+            const container = starBtn.closest('.dinyx-interactive-rating');
+            if (!container) return;
+            const hoverVal = parseInt(starBtn.getAttribute('data-value'));
+            container.querySelectorAll('.star-btn').forEach(s => {
+              const v = parseInt(s.getAttribute('data-value'));
+              if (v <= hoverVal) {
+                s.classList.add('hover');
+              } else {
+                s.classList.remove('hover');
+              }
+            });
+          }
+        });
+
+        document.addEventListener('mouseout', function(e) {
+          const starBtn = e.target.closest('.star-btn');
+          if (starBtn) {
+            const container = starBtn.closest('.dinyx-interactive-rating');
+            if (!container) return;
+            container.querySelectorAll('.star-btn').forEach(s => s.classList.remove('hover'));
+          }
+        });
+
+        // 3. MutationObserver for DOM replacement (Variant swap)
+        let initTimeout;
+        const observer = new MutationObserver((mutations) => {
+          let shouldInit = false;
+          for (let mutation of mutations) {
+            for (let node of mutation.addedNodes) {
+              if (node.nodeType === 1) {
+                if (node.closest && (
+                  node.closest('.dinyx-cod-checkout-form-container') || 
+                  node.closest('.dinyx-interactive-rating') || 
+                  node.closest('.dinyx-shipping-speed')
+                )) {
+                  continue;
+                }
+                shouldInit = true;
+                break;
+              }
+            }
+            if (shouldInit) break;
+          }
+          if (shouldInit) {
+            clearTimeout(initTimeout);
+            initTimeout = setTimeout(initAll, 50);
+          }
+        });
+
+        // 4. Set up listeners (Observe only product-info component)
+        const productInfoEl = document.querySelector('product-info');
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => {
+            initAll();
+            if (productInfoEl) {
+              observer.observe(productInfoEl, { childList: true, subtree: true });
+            } else {
+              observer.observe(document.body, { childList: true, subtree: true });
+            }
+          });
+        } else {
+          initAll();
+          if (productInfoEl) {
+            observer.observe(productInfoEl, { childList: true, subtree: true });
+          } else {
+            observer.observe(document.body, { childList: true, subtree: true });
+          }
+        }
+      })();
+    </script>
+    {%- comment -%} Mobile Sticky Bottom Bar {%- endcomment -%}
+    <div class="sticky-bottom-action-container medium-hide large-up-hide">
+      <div class="sticky-bottom-action-container__info">
+        <span class="sticky-bottom-action-container__title">{{ product.title | escape }}</span>
+        <span class="sticky-bottom-action-container__price" id="sticky-price-display">
+          {{ product.selected_or_first_available_variant.price | money }}
+        </span>
+      </div>
+      
+      {%- assign is_whatsapp_product = false -%}
+      {%- for tag in product.tags -%}
+        {%- assign tag_downcase = tag | downcase -%}
+        {%- if tag_downcase == 'whatsapp-order' or tag_downcase == 'whatsapp' or tag_downcase == 'whatsapp-only' -%}
+          {%- assign is_whatsapp_product = true -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+      
+      {%- if is_whatsapp_product -%}
+        <button type="button" class="btn-whatsapp-order btn--buy-on-whatsapp" style="margin:0 !important;">
+          Book on WhatsApp
+        </button>
+      {%- else -%}
+        <button type="button" class="button button--primary" onclick="const atc = document.querySelector('button[name=\'add\']'); if (atc) atc.click();" style="margin:0 !important;">
+          Add to Cart
+        </button>
+      {%- endif -%}
+    </div>
   </div>
 </product-info>
 
@@ -2084,6 +3019,49 @@
           "default": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.default",
           "label": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.label",
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
+        }
+      ]
+    },
+    {
+      "type": "shipping_speed",
+      "name": "Shipping Speed",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "fast_price",
+          "label": "Fast Shipping Price Text",
+          "default": "₹399 extra"
+        },
+        {
+          "type": "text",
+          "id": "standard_price",
+          "label": "Standard Shipping Price Text",
+          "default": "FREE"
+        }
+      ]
+    },
+    {
+      "type": "cod_checkout_form",
+      "name": "Custom COD Order Form",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "form_title",
+          "label": "Form Title",
+          "default": "Cash on Delivery Order Details"
+        },
+        {
+          "type": "text",
+          "id": "whatsapp_number",
+          "label": "WhatsApp Number (e.g. 918075356149)",
+          "default": "918075356149"
+        },
+        {
+          "type": "text",
+          "id": "webhook_url",
+          "label": "Optional Webhook URL"
         }
       ]
     }

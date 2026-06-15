@@ -31,11 +31,7 @@
 {%- if card_product and card_product != empty -%}
   {%- liquid
     assign ratio = 1
-    if card_product.featured_media and media_aspect_ratio == 'portrait'
-      assign ratio = 0.8
-    elsif card_product.featured_media and media_aspect_ratio == 'adapt'
-      assign ratio = card_product.featured_media.aspect_ratio
-    endif
+    # Force ratio = 1 to ensure all cards have the exact same size
     if ratio == 0 or ratio == null
       assign ratio = 1
     endif
@@ -135,9 +131,11 @@
             {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
               <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }} badge--sale-percent"
               >
-                {{- 'products.product.on_sale' | t -}}
+                {%- assign discount_amount = card_product.compare_at_price | minus: card_product.price -%}
+                {%- assign discount_percent = discount_amount | times: 100 | divided_by: card_product.compare_at_price -%}
+                -{{ discount_percent }}% OFF
               </span>
             {%- endif -%}
           </div>
@@ -168,40 +166,24 @@
 
             <span class="caption-large light">{{ block.settings.description | escape }}</span>
 
-            {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
-              {% liquid
-                assign rating_decimal = 0
-                assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
-                if decimal >= 0.3 and decimal <= 0.7
-                  assign rating_decimal = 0.5
-                elsif decimal > 0.7
-                  assign rating_decimal = 1
-                endif
-              %}
-              <div
-                class="rating"
-                role="img"
-                aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}"
-              >
-                <span
-                  aria-hidden="true"
-                  class="rating-star"
-                  style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
-                ></span>
+            {%- if show_rating -%}
+              <div class="rating-wrapper dinyx-card-rating" data-product-id="{{ card_product.id }}">
+                <div class="rating" role="img" aria-label="5 stars out of 5">
+                  <span aria-hidden="true" class="star filled">★</span>
+                  <span aria-hidden="true" class="star filled">★</span>
+                  <span aria-hidden="true" class="star filled">★</span>
+                  <span aria-hidden="true" class="star filled">★</span>
+                  <span aria-hidden="true" class="star filled">★</span>
+                </div>
+                <p class="rating-text caption">
+                  <span aria-hidden="true">
+                    <span class="rating-value">5.0</span> / 5
+                  </span>
+                </p>
+                <p class="rating-count caption">
+                  <span aria-hidden="true">(<span class="rating-count">12</span>)</span>
+                </p>
               </div>
-              <p class="rating-text caption">
-                <span aria-hidden="true">
-                  {{- card_product.metafields.reviews.rating.value }} /
-                  {{ card_product.metafields.reviews.rating.value.scale_max -}}
-                </span>
-              </p>
-              <p class="rating-count caption">
-                <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
-                <span class="visually-hidden">
-                  {{- card_product.metafields.reviews.rating_count }}
-                  {{ 'accessibility.total_reviews' | t -}}
-                </span>
-              </p>
             {%- endif -%}
 
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
@@ -559,9 +541,11 @@
           {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
             <span
               id="Badge-{{ section_id }}-{{ card_product.id }}"
-              class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+              class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }} badge--sale-percent"
             >
-              {{- 'products.product.on_sale' | t -}}
+              {%- assign discount_amount = card_product.compare_at_price | minus: card_product.price -%}
+              {%- assign discount_percent = discount_amount | times: 100 | divided_by: card_product.compare_at_price -%}
+              -{{ discount_percent }}% OFF
             </span>
           {%- endif -%}
         </div>

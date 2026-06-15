@@ -3595,3 +3595,600 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+/* ==========================================================================
+   DINYX CUSTOM THEME FEATURES: Badges, Interactive Ratings, Shipping Speed
+   ========================================================================= */
+
+/* 1. Percent Off Badges */
+.badge.badge--sale-percent {
+  background: linear-gradient(135deg, #ff2a5f 0%, #ff7e40 100%) !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  border: none !important;
+  padding: 0.5rem 1.4rem !important;
+  border-radius: 3rem !important;
+  text-transform: uppercase !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.05rem !important;
+  box-shadow: 0 3px 8px rgba(255, 42, 95, 0.25) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  margin-top: 0.2rem !important;
+  margin-bottom: 0.2rem !important;
+}
+
+/* 2. Interactive Ratings */
+.dinyx-interactive-rating {
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dinyx-interactive-rating .rating-instruction {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: rgba(0,0,0,0.6);
+  width: 100%;
+}
+
+.dinyx-interactive-rating .rating-stars {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.dinyx-interactive-rating .star-btn {
+  cursor: pointer;
+  display: inline-flex;
+  transition: transform 0.15s ease;
+}
+
+.dinyx-interactive-rating .star-btn:hover {
+  transform: scale(1.2);
+}
+
+.dinyx-interactive-rating .star-btn svg {
+  fill: #e0e0e0;
+  stroke: #121212;
+  stroke-width: 1px;
+  width: 22px;
+  height: 22px;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.dinyx-interactive-rating .star-btn.hover svg,
+.dinyx-interactive-rating .star-btn.filled svg {
+  fill: #ffb400;
+  stroke: #d09000;
+}
+
+.dinyx-interactive-rating .rating-label {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #121212;
+}
+
+.dinyx-interactive-rating .rating-count-text {
+  font-size: 1.3rem;
+  color: #666666;
+}
+
+/* Product Card Rating custom styling */
+.dinyx-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.5rem 0;
+}
+
+.dinyx-card-rating .rating {
+  display: flex;
+  gap: 2px;
+}
+
+.dinyx-card-rating .star {
+  font-size: 1.3rem;
+  color: #ccc;
+}
+
+.dinyx-card-rating .star.filled {
+  color: #ffb400;
+}
+
+.dinyx-card-rating .rating-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0 !important;
+  color: #121212;
+}
+
+.dinyx-card-rating .rating-count {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0 !important;
+}
+
+/* 3. Shipping Speed Block Selector */
+.dinyx-shipping-speed {
+  margin: 2.2rem 0;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 1.8rem 0;
+}
+
+.dinyx-shipping-speed__title-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.dinyx-shipping-speed__title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  color: #121212;
+}
+
+.dinyx-shipping-speed__info-icon {
+  display: inline-flex;
+  color: #999;
+  cursor: pointer;
+}
+
+.dinyx-shipping-speed__options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  margin-bottom: 1.4rem;
+}
+
+.dinyx-shipping-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 1.4rem 1.6rem;
+  cursor: pointer;
+  position: relative;
+  background-color: #ffffff;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.dinyx-shipping-card:hover {
+  border-color: #999;
+}
+
+.dinyx-shipping-card.active {
+  border: 2px solid #28a745;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.08);
+}
+
+.dinyx-shipping-card__badge {
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  background-color: #28a745;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  letter-spacing: 0.05rem;
+}
+
+.dinyx-shipping-card__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.dinyx-shipping-card__icon-text {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.dinyx-shipping-card__icon {
+  font-size: 1.6rem;
+}
+
+.dinyx-shipping-card__name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+.dinyx-shipping-card__indicator {
+  display: flex;
+  align-items: center;
+}
+
+.dinyx-shipping-card__check-circle {
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.dinyx-shipping-card.active .dinyx-shipping-card__check-circle {
+  border-color: #28a745;
+  background-color: #28a745;
+}
+
+.dinyx-shipping-card.active .dinyx-shipping-card__check-circle::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.dinyx-shipping-card__days {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #121212;
+  margin: 0.6rem 0;
+}
+
+.dinyx-shipping-card__price {
+  font-size: 1.25rem;
+  color: #666666;
+  font-weight: 500;
+}
+
+.dinyx-shipping-delivery-date::before {
+  content: '✓';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #28a745;
+  color: #fff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   DINYX MODERN PREMIUM REDESIGN CUSTOM CSS
+   ========================================================================== */
+
+/* Custom Color Theme overrides */
+:root {
+  --color-brand-primary: #111111;
+  --color-brand-secondary: #ffffff;
+  --color-brand-accent: #ff5a5f;
+  --color-brand-accent-rgb: 255, 90, 95;
+  --color-whatsapp: #25d366;
+}
+
+/* 1. Global Redesign Elements */
+
+/* Buttons Premium Styling */
+.button, .shopify-payment-button__button--unbranded {
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1rem !important;
+  text-transform: uppercase !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.button--primary, .shopify-payment-button__button--unbranded {
+  background-color: var(--color-brand-accent) !important;
+  color: var(--color-brand-secondary) !important;
+  border: 1px solid var(--color-brand-accent) !important;
+}
+
+.button--primary:hover, .shopify-payment-button__button--unbranded:hover {
+  background-color: var(--color-brand-primary) !important;
+  border-color: var(--color-brand-primary) !important;
+  box-shadow: 0 4px 15px rgba(255, 90, 95, 0.3) !important;
+  transform: translateY(-2px);
+}
+
+.button--secondary {
+  background-color: transparent !important;
+  color: var(--color-brand-secondary) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.button--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: var(--color-brand-secondary) !important;
+  transform: translateY(-2px);
+}
+
+/* Header & Navigation */
+.header-wrapper {
+  background-color: var(--color-brand-primary) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+}
+
+.header__menu-item, .header__icon, .header__heading-link .h2 {
+  color: var(--color-brand-secondary) !important;
+  transition: color 0.2s ease;
+}
+
+.header__menu-item:hover, .header__icon:hover {
+  color: var(--color-brand-accent) !important;
+}
+
+/* Sale Badge Override */
+.badge.color-scheme-4 {
+  background-color: var(--color-brand-accent) !important;
+  color: var(--color-brand-secondary) !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 0.05rem;
+  padding: 0.5rem 1rem !important;
+  border: none !important;
+  border-radius: 4px !important;
+}
+
+/* 2. Color Swatches styling */
+.swatch-input__input:checked + .swatch-input__label {
+  outline: 2px solid var(--color-brand-accent) !important;
+  outline-offset: 2px;
+}
+
+.swatch-input__label {
+  border-radius: 50% !important;
+  width: 3.6rem !important;
+  height: 3.6rem !important;
+  min-width: 3.6rem !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.2s ease !important;
+}
+
+.swatch-input__label:hover {
+  transform: scale(1.1);
+  border-color: var(--color-brand-secondary) !important;
+}
+
+.swatch-input__label .swatch {
+  border-radius: 50% !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Custom Swatches fallback variables mapping */
+:root {
+  --color-swatch-black: #000000;
+  --color-swatch-white: #ffffff;
+  --color-swatch-red: #d32f2f;
+  --color-swatch-blue: #1976d2;
+  --color-swatch-green: #388e3c;
+  --color-swatch-yellow: #fbc02d;
+  --color-swatch-grey: #888888;
+  --color-swatch-gray: #888888;
+  --color-swatch-cream: #fffdd0;
+  --color-swatch-beige: #f5f5dc;
+  --color-swatch-pink: #ffc0cb;
+  --color-swatch-purple: #800080;
+  --color-swatch-orange: #ffa500;
+  --color-swatch-navy: #000080;
+  --color-swatch-gold: #ffd700;
+  --color-swatch-silver: #c0c0c0;
+}
+
+/* 3. Delivery Estimator Styling */
+.dinyx-delivery-estimator {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.4rem;
+}
+
+.dinyx-delivery-estimator__icon {
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  color: var(--color-brand-accent);
+}
+
+.dinyx-delivery-estimator__text {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+}
+
+.dinyx-delivery-estimator__text strong {
+  color: var(--color-brand-secondary);
+  font-weight: 600;
+}
+
+/* 4. WhatsApp Order Form Styling */
+.whatsapp-order-container {
+  margin: 2.5rem 0;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.whatsapp-order-container h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-brand-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.whatsapp-order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.whatsapp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.whatsapp-field label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.whatsapp-field input, .whatsapp-field textarea, .whatsapp-field select {
+  padding: 1.2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  color: var(--color-brand-secondary);
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-field input:focus, .whatsapp-field textarea:focus, .whatsapp-field select:focus {
+  outline: none;
+  border-color: var(--color-brand-accent);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.whatsapp-field textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.btn-whatsapp-order {
+  background-color: var(--color-whatsapp) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--color-whatsapp) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.6rem !important;
+  padding: 1.5rem !important;
+  border-radius: 4px !important;
+  cursor: pointer;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.btn-whatsapp-order:hover {
+  background-color: #128c7e !important;
+  border-color: #128c7e !important;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.btn-whatsapp-order svg {
+  width: 2.2rem;
+  height: 2.2rem;
+  fill: currentColor;
+}
+
+/* 5. Mobile Sticky Bottom Actions */
+@media screen and (max-width: 749px) {
+  .whatsapp-order-container {
+    padding: 1.8rem;
+  }
+
+  .sticky-bottom-action-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-brand-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.2rem 1.6rem;
+    z-index: 99;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.2rem;
+    animation: slideUp 0.3s ease forwards;
+  }
+
+  /* Offset body to prevent content overlay */
+  body {
+    padding-bottom: 80px !important;
+  }
+
+  .sticky-bottom-action-container .button, 
+  .sticky-bottom-action-container .btn-whatsapp-order {
+    flex: 1;
+    margin: 0 !important;
+    padding: 1.2rem !important;
+    font-size: 1.4rem !important;
+    height: auto !important;
+  }
+
+  .sticky-bottom-action-container__info {
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
+  }
+
+  .sticky-bottom-action-container__title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sticky-bottom-action-container__price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-brand-secondary);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Touch targets mobile menu improvements */
+.menu-drawer__menu-item {
+  padding-top: 1.6rem !important;
+  padding-bottom: 1.6rem !important;
+  font-size: 1.8rem !important;
+}
+
+.menu-drawer__close-button {
+  min-height: 48px;
+  min-width: 48px;
+}

@@ -16,10 +16,18 @@
   >
     {%- for option in product.options_with_values -%}
       {%- liquid
+        assign is_color = false
+        assign option_name_downcase = option.name | downcase
+        if option_name_downcase contains 'color' or option_name_downcase contains 'colour'
+          assign is_color = true
+        endif
+
         assign swatch_count = option.values | map: 'swatch' | compact | size
         assign picker_type = block.settings.picker_type
 
-        if swatch_count > 0 and block.settings.swatch_shape != 'none'
+        if is_color
+          assign picker_type = 'swatch'
+        elsif swatch_count > 0 and block.settings.swatch_shape != 'none'
           if block.settings.picker_type == 'dropdown'
             assign picker_type = 'swatch_dropdown'
           else

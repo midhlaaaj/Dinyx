@@ -38,12 +38,12 @@
       "settings": {
         "image": "shopify://shop_images/6138702275942223202.jpg",
         "image_overlay_opacity": 40,
-        "image_height": "large",
+        "image_height": "adapt",
         "image_behavior": "none",
         "desktop_content_position": "bottom-left",
         "desktop_content_alignment": "left",
         "show_text_box": false,
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-4",
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "left",
         "show_text_below": false
@@ -96,7 +96,7 @@
         "heading_size": "h1",
         "image_ratio": "portrait",
         "columns_desktop": 3,
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-1",
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -119,7 +119,7 @@
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -174,8 +174,59 @@
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "left",
-        "section_color_scheme": "scheme-4",
-        "color_scheme": "scheme-4",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "customer_love": {
+      "type": "customer-love",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "author_name": "Rohan P.",
+            "chat_text_1": "Bhai shoes mast hai 🔥",
+            "chat_text_2": "Comfortable bhi hai",
+            "chat_text_3": "Delivery bhi fast thi",
+            "chat_text_4": "Thanks Dinyx 🙏",
+            "tagline": "Top notch!",
+            "rating": "5"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "author_name": "Arjun S.",
+            "chat_text_1": "Bhai shoes mast hai 🔥",
+            "chat_text_2": "Comfortable bhi hai",
+            "chat_text_3": "Delivery bhi fast thi",
+            "chat_text_4": "Thanks Dinyx",
+            "tagline": "Very comfortable!",
+            "rating": "5"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "author_name": "Vivek M.",
+            "chat_text_1": "Packaging 10/10 ✅",
+            "chat_text_2": "Delivered in just 3 days!",
+            "tagline": "Packaging 10/10 ✅",
+            "rating": "5"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
+      "settings": {
+        "title": "CUSTOMER LOVE",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -185,6 +236,7 @@
     "image_banner",
     "collection_list_8RLnE8",
     "featured_collection",
+    "customer_love",
     "image_with_text_ywzCxn"
   ]
 }

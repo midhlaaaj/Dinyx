@@ -26,7 +26,28 @@ if (!customElements.get('product-info')) {
         );
 
         this.initQuantityHandlers();
+        this.updateDeliveryEstimate();
         this.dispatchEvent(new CustomEvent('product-info:loaded', { bubbles: true }));
+      }
+
+      updateDeliveryEstimate() {
+        const displayElement = this.querySelector('#dinyx-delivery-date-display');
+        if (!displayElement) return;
+
+        const today = new Date();
+        const start = new Date(today);
+        start.setDate(today.getDate() + 5);
+        const end = new Date(today);
+        end.setDate(today.getDate() + 7);
+        
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        
+        const startDay = start.getDate();
+        const startMonth = months[start.getMonth()];
+        const endDay = end.getDate();
+        const endMonth = months[end.getMonth()];
+        
+        displayElement.textContent = `${startDay} ${startMonth} - ${endDay} ${endMonth}`;
       }
 
       addPreProcessCallback(callback) {
@@ -200,6 +221,18 @@ if (!customElements.get('product-info')) {
             html.getElementById(`ProductSubmitButton-${this.sectionId}`)?.hasAttribute('disabled') ?? true,
             window.variantStrings.soldOut
           );
+
+          this.updateDeliveryEstimate();
+
+          // Sync price display in mobile sticky bottom bar
+          const stickyPriceEl = this.querySelector('#sticky-price-display');
+          const pagePriceEl = html.getElementById(`price-${this.sectionId}`);
+          if (stickyPriceEl && pagePriceEl) {
+            const activePriceVal = pagePriceEl.querySelector('.price-item--last, .price-item--regular');
+            if (activePriceVal) {
+              stickyPriceEl.textContent = activePriceVal.textContent;
+            }
+          }
 
           publish(PUB_SUB_EVENTS.variantChange, {
             data: {
