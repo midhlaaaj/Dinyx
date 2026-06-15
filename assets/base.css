@@ -4192,3 +4192,18 @@ details-disclosure > details {
   min-height: 48px;
   min-width: 48px;
 }
+
+/* Dynamic Modal Backdrop Blur Effect & Body Scroll Lock */
+body.dinyx-modal-open > :not(.dinyx-modal-overlay) {
+  filter: blur(10px) !important;
+}
+
+body > :not(.dinyx-modal-overlay) {
+  transition: filter 0.3s ease !important;
+}
+
+body.dinyx-scroll-lock,
+html.dinyx-scroll-lock {
+  overflow: hidden !important;
+  height: 100% !important;
+}

@@ -626,8 +626,9 @@
     -webkit-backdrop-filter: blur(15px) !important;
     z-index: 100000 !important;
     display: flex !important;
-    justify-content: center !important;
-    align-items: flex-start !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
     overflow-y: auto !important;
     padding: 1.5rem 1rem !important;
     opacity: 0 !important;
@@ -1079,8 +1080,12 @@
       
       initCartModalShipping();
       
+      if (modalOverlay.parentElement !== document.body) {
+        document.body.appendChild(modalOverlay);
+      }
       modalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('dinyx-modal-open', 'dinyx-scroll-lock');
+      document.documentElement.classList.add('dinyx-scroll-lock');
       
       const itemsContainer = document.getElementById('dinyx-cart-modal-items');
       if (itemsContainer) {
@@ -1147,7 +1152,8 @@
         const modalOverlay = document.getElementById('dinyx-cart-modal-overlay');
         if (modalOverlay && modalOverlay.classList.contains('active')) {
           modalOverlay.classList.remove('active');
-          document.body.style.overflow = '';
+          document.body.classList.remove('dinyx-modal-open', 'dinyx-scroll-lock');
+          document.documentElement.classList.remove('dinyx-scroll-lock');
           if (cartModified) {
             window.location.reload();
           }
@@ -1235,7 +1241,8 @@
             const modalOverlay = document.getElementById('dinyx-cart-modal-overlay');
             if (modalOverlay) {
               modalOverlay.classList.remove('active');
-              document.body.style.overflow = '';
+              document.body.classList.remove('dinyx-modal-open', 'dinyx-scroll-lock');
+              document.documentElement.classList.remove('dinyx-scroll-lock');
             }
             window.location.reload();
           }, 3000);

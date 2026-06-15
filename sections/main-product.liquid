@@ -241,8 +241,9 @@
       -webkit-backdrop-filter: blur(15px) !important;
       z-index: 100000 !important;
       display: flex !important;
-      justify-content: center !important;
-      align-items: flex-start !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      align-items: center !important;
       overflow-y: auto !important;
       padding: 1.5rem 1rem !important;
       opacity: 0 !important;
@@ -1422,13 +1423,12 @@
             updateCodFormDetails(); // Ensure modal is up-to-date
             const modalOverlay = document.getElementById('dinyx-cod-modal-overlay');
             if (modalOverlay) {
-              modalOverlay.classList.add('active');
-              document.body.style.overflow = 'hidden'; // Lock scrolling
-              const parentSection = modalOverlay.closest('.shopify-section');
-              if (parentSection) {
-                parentSection.style.zIndex = '1000000';
-                parentSection.style.position = 'relative';
+              if (modalOverlay.parentElement !== document.body) {
+                document.body.appendChild(modalOverlay);
               }
+              modalOverlay.classList.add('active');
+              document.body.classList.add('dinyx-modal-open', 'dinyx-scroll-lock');
+              document.documentElement.classList.add('dinyx-scroll-lock');
             }
             return;
           }
@@ -1440,12 +1440,8 @@
             const modalOverlay = document.getElementById('dinyx-cod-modal-overlay');
             if (modalOverlay) {
               modalOverlay.classList.remove('active');
-              document.body.style.overflow = ''; // Restore scrolling
-              const parentSection = modalOverlay.closest('.shopify-section');
-              if (parentSection) {
-                parentSection.style.zIndex = '';
-                parentSection.style.position = '';
-              }
+              document.body.classList.remove('dinyx-modal-open', 'dinyx-scroll-lock');
+              document.documentElement.classList.remove('dinyx-scroll-lock');
             }
             return;
           }
