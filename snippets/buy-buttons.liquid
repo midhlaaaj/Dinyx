@@ -94,7 +94,17 @@
             {%- render 'loading-spinner' -%}
           </button>
           {%- if show_dynamic_checkout -%}
-            {{ form | payment_button }}
+            <button
+              type="button"
+              id="dinyx-custom-buy-now"
+              class="shopify-payment-button__button shopify-payment-button__button--unbranded button button--primary button--full-width"
+              style="margin-top: 1rem;"
+              {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout or product.selected_or_first_available_variant == null %}
+                disabled
+              {% endif %}
+            >
+              Buy it now
+            </button>
           {%- endif -%}
         </div>
       {%- endform -%}

@@ -236,10 +236,10 @@
       left: 0 !important;
       width: 100% !important;
       height: 100% !important;
-      background-color: rgba(0, 0, 0, 0.5) !important;
-      backdrop-filter: blur(8px) !important;
-      -webkit-backdrop-filter: blur(8px) !important;
-      z-index: 10000 !important;
+      background-color: rgba(0, 0, 0, 0.7) !important;
+      backdrop-filter: blur(15px) !important;
+      -webkit-backdrop-filter: blur(15px) !important;
+      z-index: 100000 !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
@@ -256,15 +256,16 @@
     .dinyx-modal-container {
       background-color: #ffffff !important;
       border-radius: 12px !important;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25) !important;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
       width: 90% !important;
       max-width: 500px !important;
-      max-height: 90vh !important;
+      max-height: 85vh !important;
       overflow-y: auto !important;
       padding: 3rem !important;
       position: relative !important;
       transform: scale(0.9) !important;
       transition: transform 0.3s ease !important;
+      margin: auto !important;
     }
 
     .dinyx-modal-overlay.active .dinyx-modal-container {
@@ -1404,7 +1405,7 @@
         document.addEventListener('click', function(e) {
           // Official green WhatsApp button click (custom liquid block) or Buy It Now button click
           const officialWaBtn = e.target.closest('.btn--buy-on-whatsapp');
-          const buyItNowBtn = e.target.closest('.shopify-payment-button') || e.target.closest('.shopify-payment-button__button');
+          const buyItNowBtn = e.target.closest('#dinyx-custom-buy-now') || e.target.closest('.shopify-payment-button') || e.target.closest('.shopify-payment-button__button');
           if (officialWaBtn || buyItNowBtn) {
             e.preventDefault(); // Intercept redirect
             e.stopPropagation();
