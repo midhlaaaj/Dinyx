@@ -1058,11 +1058,11 @@
               <span class="dinyx-cart-shipping-icon">⚡</span>
               <div class="dinyx-cart-shipping-details">
                 <span class="dinyx-cart-shipping-name">Fast Delivery</span>
-                <span class="dinyx-cart-shipping-days">4 - 5 Days</span>
+                <span class="dinyx-cart-shipping-days">{{ settings.fast_shipping_days_min | default: 4 }} - {{ settings.fast_shipping_days_max | default: 5 }} Days</span>
               </div>
             </div>
             <div style="display: flex; align-items: center; gap: 1rem;">
-              <span class="dinyx-cart-shipping-price">Rs. 399.00</span>
+              <span class="dinyx-cart-shipping-price">Rs. {{ settings.fast_shipping_price | default: 199 }}.00</span>
               <span class="dinyx-cart-shipping-indicator"></span>
             </div>
           </div>
@@ -1072,7 +1072,7 @@
               <span class="dinyx-cart-shipping-icon">📦</span>
               <div class="dinyx-cart-shipping-details">
                 <span class="dinyx-cart-shipping-name">Standard Delivery</span>
-                <span class="dinyx-cart-shipping-days">7 - 12 Days</span>
+                <span class="dinyx-cart-shipping-days">{{ settings.standard_shipping_days_min | default: 7 }} - {{ settings.standard_shipping_days_max | default: 12 }} Days</span>
               </div>
             </div>
             <div style="display: flex; align-items: center; gap: 1rem;">
@@ -1095,7 +1095,7 @@
         </div>
         <div class="dinyx-cod-summary-row">
           <span>Shipping</span>
-          <span id="dinyx-cart-shipping">Rs. 399.00</span>
+          <span id="dinyx-cart-shipping">Rs. {{ settings.fast_shipping_price | default: 199 }}.00</span>
         </div>
         <div class="dinyx-cod-summary-row total-row">
           <span>Total</span>
@@ -1202,7 +1202,7 @@
     function updateCartModalTotals(subtotalVal) {
       const activeCard = document.querySelector('.dinyx-cart-shipping-card.active');
       const isFast = activeCard && activeCard.getAttribute('data-type') === 'fast';
-      const shippingVal = isFast ? 399 : 0;
+      const shippingVal = isFast ? {{ settings.fast_shipping_price | default: 199 }} : 0;
       
       let discountValue = 0;
       const discountRow = document.getElementById('dinyx-cart-discount-row');
@@ -1498,7 +1498,7 @@
         const activeCard = document.querySelector('.dinyx-cart-shipping-card.active');
         const isFast = activeCard && activeCard.getAttribute('data-type') === 'fast';
         const shippingName = isFast ? 'Fast Delivery' : 'Standard Delivery';
-        const shippingVal = isFast ? 399 : 0;
+        const shippingVal = isFast ? {{ settings.fast_shipping_price | default: 199 }} : 0;
         const subtotalVal = currentCartData.total_price / 100.0;
         const totalVal = subtotalVal + shippingVal;
 

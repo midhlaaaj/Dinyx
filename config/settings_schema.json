@@ -1582,5 +1582,48 @@
         "default": 0
       }
     ]
+  },
+  {
+    "name": "Shipping Settings (WhatsApp Checkout)",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Fast Delivery Settings"
+      },
+      {
+        "type": "number",
+        "id": "fast_shipping_price",
+        "label": "Fast Delivery Price (Rs.)",
+        "default": 199
+      },
+      {
+        "type": "number",
+        "id": "fast_shipping_days_min",
+        "label": "Fast Delivery Min Days",
+        "default": 4
+      },
+      {
+        "type": "number",
+        "id": "fast_shipping_days_max",
+        "label": "Fast Delivery Max Days",
+        "default": 5
+      },
+      {
+        "type": "header",
+        "content": "Standard Delivery Settings"
+      },
+      {
+        "type": "number",
+        "id": "standard_shipping_days_min",
+        "label": "Standard Delivery Min Days",
+        "default": 7
+      },
+      {
+        "type": "number",
+        "id": "standard_shipping_days_max",
+        "label": "Standard Delivery Max Days",
+        "default": 12
+      }
+    ]
   }
 ]

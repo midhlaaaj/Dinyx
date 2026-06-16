@@ -49,7 +49,7 @@
         "custom_liquid_aq68A3": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% capture product_url %}{{ shop.url }}{{ product.url }}{% endcapture %}\n{% capture product_name %}{{ product.title | url_escape }}{% endcapture %}\n<a href=\"https://wa.me/+918075356149?text=Hello, I%20would%20like%20to%20buy%20this%20product:%20{{ product_name }}%20{{ product_url }}\" class=\"btn btn--buy-on-whatsapp\" target=\"_blank\">Need Help? Contact Us</a>"
+            "custom_liquid": "<a href=\"https://wa.me/+918075356149?text=Need%20Help\" class=\"btn btn--buy-on-whatsapp btn--need-help\" target=\"_blank\">Need Help? Contact Us</a>"
           }
         },
         "buy_buttons": {

@@ -789,7 +789,7 @@
                   </div>
                   
                   <div class="dinyx-shipping-speed__options">
-                    <div class="dinyx-shipping-card active" data-type="fast" data-days-min="4" data-days-max="5">
+                    <div class="dinyx-shipping-card active" data-type="fast" data-days-min="{{ settings.fast_shipping_days_min | default: 4 }}" data-days-max="{{ settings.fast_shipping_days_max | default: 5 }}">
                       <div class="dinyx-shipping-card__badge">RECOMMENDED</div>
                       <div class="dinyx-shipping-card__content">
                         <div class="dinyx-shipping-card__icon-text">
@@ -800,11 +800,11 @@
                           <span class="dinyx-shipping-card__check-circle"></span>
                         </div>
                       </div>
-                      <div class="dinyx-shipping-card__days">4 - 5 Days</div>
-                      <div class="dinyx-shipping-card__price">{{ block.settings.fast_price | escape }}</div>
+                      <div class="dinyx-shipping-card__days">{{ settings.fast_shipping_days_min | default: 4 }} - {{ settings.fast_shipping_days_max | default: 5 }} Days</div>
+                      <div class="dinyx-shipping-card__price">Rs. {{ settings.fast_shipping_price | default: 199 }}.00 extra</div>
                     </div>
                     
-                    <div class="dinyx-shipping-card" data-type="standard" data-days-min="7" data-days-max="12">
+                    <div class="dinyx-shipping-card" data-type="standard" data-days-min="{{ settings.standard_shipping_days_min | default: 7 }}" data-days-max="{{ settings.standard_shipping_days_max | default: 12 }}">
                       <div class="dinyx-shipping-card__content">
                         <div class="dinyx-shipping-card__icon-text">
                           <span class="dinyx-shipping-card__icon">📦</span>
@@ -814,8 +814,8 @@
                           <span class="dinyx-shipping-card__check-circle"></span>
                         </div>
                       </div>
-                      <div class="dinyx-shipping-card__days">7 - 12 Days</div>
-                      <div class="dinyx-shipping-card__price">{{ block.settings.standard_price | escape }}</div>
+                      <div class="dinyx-shipping-card__days">{{ settings.standard_shipping_days_min | default: 7 }} - {{ settings.standard_shipping_days_max | default: 12 }} Days</div>
+                      <div class="dinyx-shipping-card__price">FREE</div>
                     </div>
                   </div>
                   
@@ -904,8 +904,8 @@
                             <div class="dinyx-input-wrapper">
                               <span class="dinyx-field-icon">🚚</span>
                               <select id="dinyx-cod-shipping-speed-select">
-                                <option value="standard">Standard Delivery (7-12 Days) - Free</option>
-                                <option value="fast">Fast Delivery (4-5 Days) - Rs. 399.00</option>
+                                <option value="standard">Standard Delivery ({{ settings.standard_shipping_days_min | default: 7 }}-{{ settings.standard_shipping_days_max | default: 12 }} Days) - Free</option>
+                                <option value="fast">Fast Delivery ({{ settings.fast_shipping_days_min | default: 4 }}-{{ settings.fast_shipping_days_max | default: 5 }} Days) - Rs. {{ settings.fast_shipping_price | default: 199 }}.00</option>
                               </select>
                             </div>
                           </div>
@@ -1404,7 +1404,7 @@
           // 3. Shipping cost
           const activeShippingCard = document.querySelector('.dinyx-shipping-card.active');
           const isFastShipping = activeShippingCard && activeShippingCard.getAttribute('data-type') === 'fast';
-          const shippingValue = isFastShipping ? 399 : 0;
+          const shippingValue = isFastShipping ? {{ settings.fast_shipping_price | default: 199 }} : 0;
 
           // Formatting function
           function formatPrice(val, prefix) {
@@ -1559,7 +1559,7 @@
         // Click handler
         document.addEventListener('click', function(e) {
           // Official green WhatsApp button click (custom liquid block) or Buy It Now button click
-          const officialWaBtn = e.target.closest('.btn--buy-on-whatsapp');
+          const officialWaBtn = e.target.closest('.btn--buy-on-whatsapp:not(.btn--need-help)');
           const buyItNowBtn = e.target.closest('#dinyx-custom-buy-now') || e.target.closest('.shopify-payment-button') || e.target.closest('.shopify-payment-button__button');
           if (officialWaBtn || buyItNowBtn) {
             e.preventDefault(); // Intercept redirect
@@ -3210,7 +3210,7 @@
           "type": "text",
           "id": "fast_price",
           "label": "Fast Shipping Price Text",
-          "default": "₹399 extra"
+          "default": "₹199 extra"
         },
         {
           "type": "text",
