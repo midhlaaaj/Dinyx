@@ -412,19 +412,7 @@
                   </div>
                 {%- endif -%}
                 
-                <div class="dinyx-delivery-estimator">
-                  <div class="dinyx-delivery-estimator__icon">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="1" y="3" width="15" height="13"></rect>
-                      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                      <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                      <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                    </svg>
-                  </div>
-                  <div class="dinyx-delivery-estimator__text">
-                    Estimated Delivery: <strong id="dinyx-delivery-date-display">Calculating...</strong>
-                  </div>
-                </div>
+
                 <div {{ block.shopify_attributes }}>
                   {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
                   {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
@@ -1332,7 +1320,7 @@
           const startFormatted = getFormattedDate(minDays);
           const endFormatted = getFormattedDate(maxDays);
 
-          dateTextEl.textContent = `Delivered by ${startFormatted} - ${endFormatted}`;
+          dateTextEl.textContent = `Estimated Expected Delivery: ${startFormatted} - ${endFormatted}`;
         }
 
         function initShipping() {

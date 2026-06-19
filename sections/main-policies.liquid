@@ -1,0 +1,245 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .main-policies__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin-top: 3.5rem;
+  }
+
+  @media screen and (max-width: 989px) {
+    .main-policies__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .main-policies__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .main-policies__column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .main-policies__title {
+    font-family: var(--font-heading-family);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0;
+    color: rgb(var(--color-foreground));
+    position: relative;
+    padding-bottom: 0.8rem;
+  }
+
+  .main-policies__title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: rgb(var(--color-button));
+  }
+
+  .main-policies__text {
+    font-size: 1.35rem;
+    line-height: 1.6;
+    margin: 0;
+    color: rgba(var(--color-foreground), 0.75);
+  }
+
+  .main-policies__highlight {
+    font-weight: 600;
+    color: rgb(var(--color-foreground));
+    background-color: rgba(var(--color-button), 0.05);
+    padding: 1.2rem;
+    border-left: 3px solid rgb(var(--color-button));
+    border-radius: 0 4px 4px 0;
+  }
+
+  .main-policies__highlight p {
+    margin: 0;
+  }
+
+  .main-policies__content {
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: rgba(var(--color-foreground), 0.75);
+  }
+
+  .main-policies__content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .main-policies__content ul li {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .main-policies__content ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: rgb(var(--color-button));
+    font-weight: bold;
+  }
+{%- endstyle -%}
+
+<div class="page-width section-{{ section.id }}-padding">
+  <h1 class="main-page-title page-title h0 scroll-trigger animate--fade-in" style="text-align: center;">
+    {{ section.settings.title | escape }}
+  </h1>
+  
+  <div class="main-policies__grid">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'policy_column' -%}
+          <div class="main-policies__column" {{ block.shopify_attributes }}>
+            {%- if block.settings.title != blank -%}
+              <h3 class="main-policies__title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            
+            {%- if block.settings.highlight_text != blank -%}
+              <div class="main-policies__text main-policies__highlight">
+                {{ block.settings.highlight_text }}
+              </div>
+            {%- endif -%}
+            
+            {%- if block.settings.content != blank -%}
+              <div class="main-policies__content rte">
+                {{ block.settings.content }}
+              </div>
+            {%- endif -%}
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Policies Page Content",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page Title",
+      "default": "Our Policies"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "policy_column",
+      "name": "Policy Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Column Heading",
+          "default": "Policy Title"
+        },
+        {
+          "type": "richtext",
+          "id": "highlight_text",
+          "label": "Highlight Text (Optional)"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Policy Content",
+          "default": "<p>Add details about this policy column.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Policies Page Layout",
+      "blocks": [
+        {
+          "type": "policy_column",
+          "settings": {
+            "title": "Our Policy",
+            "highlight_text": "<p>You must record a 360° unboxing video immediately upon receiving the product.</p>",
+            "content": "<ul><li>The video must clearly show the full package being opened and the product from all angles.</li><li>If any major damage is visible in the unboxing video, we will take immediate action to resolve the issue.</li><li>Returns or replacements will not be accepted without a proper unboxing video.</li></ul>"
+          }
+        },
+        {
+          "type": "policy_column",
+          "settings": {
+            "title": "Damage & Usage Policy",
+            "content": "<ul><li>If damage is caused due to use and the unboxing video shows the product was intact, a replacement may be provided at our discretion.</li><li>Minor variations in color, texture, or appearance are not eligible for return.</li><li>Used or worn shoes are strictly not eligible for return under any circumstances.</li></ul>"
+          }
+        },
+        {
+          "type": "policy_column",
+          "settings": {
+            "title": "Courier Policy",
+            "content": "<ul><li>If the courier is intentionally skipped or rejected by the customer, the order will be considered void and no replacement or refund will be provided.</li><li>Once the order is handed over to the courier service, any delay in delivery is beyond our control, and we shall not be held responsible for such delays.</li></ul>"
+          }
+        },
+        {
+          "type": "policy_column",
+          "settings": {
+            "title": "Contact Us",
+            "content": "<p>If you have any questions or concerns regarding your order or our return policy, feel free to contact our support team. We're always here to help!</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

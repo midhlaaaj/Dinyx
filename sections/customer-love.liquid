@@ -88,52 +88,23 @@
     transform: scale(1.04);
   }
 
-  .customer-love__chat-bubbles {
+  .customer-love__card-content {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-    margin-bottom: 1.6rem;
+    gap: 0.8rem;
     flex-grow: 1;
-  }
-
-  .customer-love__chat-bubble {
-    background: #f0f0f0;
-    color: #121212;
-    padding: 0.8rem 1.2rem;
-    border-radius: 14px;
-    border-top-left-radius: 2px;
-    font-size: 1.35rem;
-    line-height: 1.4;
-    max-width: 90%;
-    word-break: break-word;
-    align-self: flex-start;
-    position: relative;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-  }
-
-  /* WhatsApp styling touch: Alternating bubbles can have whatsapp green hint or grey */
-  .customer-love__chat-bubble:nth-child(even) {
-    background: #e1f5fe; /* Soft light blue/green tint */
-  }
-
-  .customer-love__author-info {
-    border-top: 1px solid #f0f0f0;
-    padding-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
   }
 
   .customer-love__author-name {
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #121212;
   }
 
   .customer-love__author-rating {
     display: flex;
     gap: 2px;
-    margin: 0.2rem 0;
+    margin: 0.1rem 0;
   }
 
   .customer-love__author-rating .star {
@@ -145,10 +116,11 @@
     color: #ffb400; /* Gold */
   }
 
-  .customer-love__tagline {
-    font-size: 1.2rem;
+  .customer-love__text {
+    font-size: 1.35rem;
+    line-height: 1.5;
     color: #555555;
-    font-weight: 500;
+    word-break: break-word;
   }
 {%- endstyle -%}
 
@@ -180,23 +152,9 @@
               </div>
             {%- endif -%}
 
-            <div class="customer-love__chat-bubbles">
-              {%- if block.settings.chat_text_1 != blank -%}
-                <div class="customer-love__chat-bubble">{{ block.settings.chat_text_1 | escape }}</div>
-              {%- endif -%}
-              {%- if block.settings.chat_text_2 != blank -%}
-                <div class="customer-love__chat-bubble">{{ block.settings.chat_text_2 | escape }}</div>
-              {%- endif -%}
-              {%- if block.settings.chat_text_3 != blank -%}
-                <div class="customer-love__chat-bubble">{{ block.settings.chat_text_3 | escape }}</div>
-              {%- endif -%}
-              {%- if block.settings.chat_text_4 != blank -%}
-                <div class="customer-love__chat-bubble">{{ block.settings.chat_text_4 | escape }}</div>
-              {%- endif -%}
-            </div>
-
-            <div class="customer-love__author-info">
+            <div class="customer-love__card-content">
               <span class="customer-love__author-name">{{ block.settings.author_name | escape }}</span>
+              
               <div class="customer-love__author-rating">
                 {%- assign rating = block.settings.rating | plus: 0 -%}
                 {%- for i in (1..5) -%}
@@ -207,8 +165,9 @@
                   {%- endif -%}
                 {%- endfor -%}
               </div>
-              {%- if block.settings.tagline != blank -%}
-                <div class="customer-love__tagline">{{ block.settings.tagline | escape }}</div>
+
+              {%- if block.settings.text != blank -%}
+                <div class="customer-love__text">{{ block.settings.text | escape }}</div>
               {%- endif -%}
             </div>
           </div>
@@ -304,30 +263,6 @@
         },
         {
           "type": "text",
-          "id": "chat_text_1",
-          "label": "Chat Bubble Line 1",
-          "default": "Bhai shoes mast hai 🔥"
-        },
-        {
-          "type": "text",
-          "id": "chat_text_2",
-          "label": "Chat Bubble Line 2",
-          "default": "Comfortable bhi hai"
-        },
-        {
-          "type": "text",
-          "id": "chat_text_3",
-          "label": "Chat Bubble Line 3",
-          "default": "Delivery bhi fast thi"
-        },
-        {
-          "type": "text",
-          "id": "chat_text_4",
-          "label": "Chat Bubble Line 4",
-          "default": "Thanks Dinyx 🙏"
-        },
-        {
-          "type": "text",
           "id": "author_name",
           "label": "Customer Name",
           "default": "Rohan P."
@@ -361,10 +296,10 @@
           "label": "Rating"
         },
         {
-          "type": "text",
-          "id": "tagline",
-          "label": "Tagline / Status",
-          "default": "Top notch!"
+          "type": "textarea",
+          "id": "text",
+          "label": "Review Text",
+          "default": "Bhai shoes mast hai 🔥 Comfortable bhi hai. Delivery bhi fast thi. Thanks Dinyx 🙏"
         }
       ]
     }
@@ -377,36 +312,24 @@
           "type": "review",
           "settings": {
             "author_name": "Rohan P.",
-            "chat_text_1": "Bhai shoes mast hai 🔥",
-            "chat_text_2": "Comfortable bhi hai",
-            "chat_text_3": "Delivery bhi fast thi",
-            "chat_text_4": "Thanks Dinyx 🙏",
-            "tagline": "Top notch!",
-            "rating": "5"
+            "rating": "5",
+            "text": "Bhai shoes mast hai 🔥 Comfortable bhi hai. Delivery bhi fast thi. Thanks Dinyx 🙏"
           }
         },
         {
           "type": "review",
           "settings": {
             "author_name": "Arjun S.",
-            "chat_text_1": "Bhai shoes mast hai 🔥",
-            "chat_text_2": "Comfortable bhi hai",
-            "chat_text_3": "Delivery bhi fast thi",
-            "chat_text_4": "Thanks Dinyx",
-            "tagline": "Very comfortable!",
-            "rating": "5"
+            "rating": "5",
+            "text": "Bhai shoes mast hai 🔥 Comfortable bhi hai. Delivery bhi fast thi. Thanks Dinyx"
           }
         },
         {
           "type": "review",
           "settings": {
             "author_name": "Vivek M.",
-            "chat_text_1": "Packaging 10/10 ✅",
-            "chat_text_2": "Delivered in just 3 days!",
-            "chat_text_3": "",
-            "chat_text_4": "",
-            "tagline": "Packaging 10/10 ✅",
-            "rating": "5"
+            "rating": "5",
+            "text": "Packaging 10/10 ✅ Delivered in just 3 days!"
           }
         }
       ]

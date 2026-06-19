@@ -515,7 +515,7 @@
 
 .banner__media > img {
   object-fit: cover !important;
-  object-position: center bottom !important; /* Keep sneakers in view */
+  object-position: center center !important; /* Center the sneakers in view */
   height: 100% !important;
   width: 100% !important;
 }

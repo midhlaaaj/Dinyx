@@ -187,34 +187,24 @@
           "type": "review",
           "settings": {
             "author_name": "Rohan P.",
-            "chat_text_1": "Bhai shoes mast hai 🔥",
-            "chat_text_2": "Comfortable bhi hai",
-            "chat_text_3": "Delivery bhi fast thi",
-            "chat_text_4": "Thanks Dinyx 🙏",
-            "tagline": "Top notch!",
-            "rating": "5"
+            "rating": "5",
+            "text": "Bhai shoes mast hai 🔥 Comfortable bhi hai. Delivery bhi fast thi. Thanks Dinyx 🙏"
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
             "author_name": "Arjun S.",
-            "chat_text_1": "Bhai shoes mast hai 🔥",
-            "chat_text_2": "Comfortable bhi hai",
-            "chat_text_3": "Delivery bhi fast thi",
-            "chat_text_4": "Thanks Dinyx",
-            "tagline": "Very comfortable!",
-            "rating": "5"
+            "rating": "5",
+            "text": "Bhai shoes mast hai 🔥 Comfortable bhi hai. Delivery bhi fast thi. Thanks Dinyx"
           }
         },
         "review_3": {
           "type": "review",
           "settings": {
             "author_name": "Vivek M.",
-            "chat_text_1": "Packaging 10/10 ✅",
-            "chat_text_2": "Delivered in just 3 days!",
-            "tagline": "Packaging 10/10 ✅",
-            "rating": "5"
+            "rating": "5",
+            "text": "Packaging 10/10 ✅ Delivered in just 3 days!"
           }
         }
       },

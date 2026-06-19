@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-policies",
+      "settings": {
+        "title": "Our Policies"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

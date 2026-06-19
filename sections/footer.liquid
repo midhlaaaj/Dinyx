@@ -25,92 +25,39 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-  .footer__policies-container {
-    border-bottom: 1px solid rgba(var(--color-button), 0.08);
+  .footer__policies-link-container {
+    text-align: center;
     border-top: 1px solid rgba(var(--color-button), 0.08);
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-    margin-top: 3.5rem;
-    margin-bottom: 3.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
-  .footer__policies-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 3rem;
-  }
-  @media screen and (max-width: 989px) {
-    .footer__policies-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
-    }
-  }
-  @media screen and (max-width: 749px) {
-    .footer__policies-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-  }
-  .footer__policies-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-  .footer__policies-title {
+  .footer__policies-main-link {
     font-family: var(--font-heading-family);
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 0;
+    letter-spacing: 0.15em;
     color: rgb(var(--color-foreground));
+    text-decoration: none;
     position: relative;
-    padding-bottom: 0.8rem;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
   }
-  .footer__policies-title::after {
+  .footer__policies-main-link::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
     height: 2px;
     background-color: rgb(var(--color-button));
+    transition: width 0.3s ease;
   }
-  .footer__policies-text {
-    font-size: 1.3rem;
-    line-height: 1.6;
-    margin: 0;
-    color: rgba(var(--color-foreground), 0.75);
-  }
-  .footer__policies-highlight {
-    font-weight: 600;
-    color: rgb(var(--color-foreground));
-    background-color: rgba(var(--color-button), 0.05);
-    padding: 1.2rem;
-    border-left: 3px solid rgb(var(--color-button));
-    border-radius: 0 4px 4px 0;
-  }
-  .footer__policies-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .footer__policies-list li {
-    font-size: 1.3rem;
-    line-height: 1.5;
-    color: rgba(var(--color-foreground), 0.75);
-    position: relative;
-    padding-left: 1.5rem;
-  }
-  .footer__policies-list li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: rgb(var(--color-button));
-    font-weight: bold;
+  .footer__policies-main-link:hover::after {
+    width: 80px;
   }
 {%- endstyle -%}
 
@@ -337,42 +284,14 @@
     {%- endunless -%}
   {%- endif -%}
 
-  {%- comment -%} Custom Policies Section {%- endcomment -%}
-  <div class="footer__policies-container page-width">
-    <div class="footer__policies-grid">
-      <div class="footer__policies-column">
-        <h3 class="footer__policies-title">Our Policy</h3>
-        <p class="footer__policies-text footer__policies-highlight">You must record a 360° unboxing video immediately upon receiving the product.</p>
-        <ul class="footer__policies-list">
-          <li>The video must clearly show the full package being opened and the product from all angles.</li>
-          <li>If any major damage is visible in the unboxing video, we will take immediate action to resolve the issue.</li>
-          <li>Returns or replacements will not be accepted without a proper unboxing video.</li>
-        </ul>
-      </div>
-
-      <div class="footer__policies-column">
-        <h3 class="footer__policies-title">Damage & Usage Policy</h3>
-        <ul class="footer__policies-list">
-          <li>If damage is caused due to use and the unboxing video shows the product was intact, a replacement may be provided at our discretion.</li>
-          <li>Minor variations in color, texture, or appearance are not eligible for return.</li>
-          <li>Used or worn shoes are strictly not eligible for return under any circumstances.</li>
-        </ul>
-      </div>
-
-      <div class="footer__policies-column">
-        <h3 class="footer__policies-title">Courier Policy</h3>
-        <ul class="footer__policies-list">
-          <li>If the courier is intentionally skipped or rejected by the customer, the order will be considered void and no replacement or refund will be provided.</li>
-          <li>Once the order is handed over to the courier service, any delay in delivery is beyond our control, and we shall not be held responsible for such delays.</li>
-        </ul>
-      </div>
-
-      <div class="footer__policies-column">
-        <h3 class="footer__policies-title">Contact Us</h3>
-        <p class="footer__policies-text">If you have any questions or concerns regarding your order or our return policy, feel free to contact our support team. We're always here to help!</p>
-      </div>
+  {%- comment -%} Custom Policies Section Link {%- endcomment -%}
+  {%- if section.settings.custom_policy_link != blank -%}
+    <div class="footer__policies-link-container page-width">
+      <a href="{{ section.settings.custom_policy_link }}" class="footer__policies-main-link">
+        {{ section.settings.custom_policy_label | default: 'Our Policy' }}
+      </a>
     </div>
-  </div>
+  {%- endif -%}
 
   <div
     class="footer__content-bottom{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -645,14 +564,19 @@
       "default": 36
     },
     {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "type": "header",
+      "content": "Custom Policy Page"
+    },
+    {
+      "type": "url",
+      "id": "custom_policy_link",
+      "label": "Custom Policy Page Link"
+    },
+    {
+      "type": "text",
+      "id": "custom_policy_label",
+      "label": "Custom Policy Link Label",
+      "default": "Our Policy"
     }
   ],
   "default": {
