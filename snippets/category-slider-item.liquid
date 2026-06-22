@@ -15,6 +15,9 @@
   if section.settings.enable_desktop_slider and products_to_display > section.settings.columns_desktop
     assign show_desktop_slider = true
   endif
+
+  assign mobile_pages = products_to_display | divided_by: columns_mobile_int | ceil
+  assign desktop_pages = products_to_display | divided_by: section.settings.columns_desktop | ceil
 -%}
 
 <div class="collection page-width" id="collection-{{ section.id }}-{{ collection.id }}" style="margin-bottom: 6rem; padding-left: max(1.5rem, env(safe-area-inset-left)); padding-right: max(1.5rem, env(safe-area-inset-right));">
@@ -67,7 +70,7 @@
           <span class="slider-counter--current">1</span>
           <span aria-hidden="true"> / </span>
           <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
-          <span class="slider-counter--total">{{ products_to_display }}</span>
+          <span class="slider-counter--total">{% if show_mobile_slider %}{{ mobile_pages }}{% elsif show_desktop_slider %}{{ desktop_pages }}{% else %}{{ products_to_display }}{% endif %}</span>
         </div>
         <button
           type="button"
@@ -85,12 +88,11 @@
   </slider-component>
 
   {%- if section.settings.show_view_all -%}
-    <div class="center collection__view-all" style="margin-top: 2rem; padding: 0 1.5rem;">
+    <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <a
         href="{{ collection.url }}"
         class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
         aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: collection.title | escape }}"
-        style="width: 100%; max-width: 28rem; display: block; text-align: center;"
       >
         {{ 'sections.featured_collection.view_all' | t }}
       </a>
