@@ -104,35 +104,6 @@
         "padding_bottom": 36
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "best-seller",
-        "products_to_show": 8,
-        "title": "BEST SELLER",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": true,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "sort_by": "random",
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
     "featured_collection_new_drops": {
       "type": "featured-collection",
       "settings": {
@@ -156,8 +127,28 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "swipe_on_mobile": true,
+        "swipe_on_mobile": false,
         "sort_by": "latest",
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "all_categories_products": {
+      "type": "all-categories-products",
+      "settings": {
+        "products_to_show": 8,
+        "heading_size": "h1",
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
         "padding_top": 44,
         "padding_bottom": 36
       }
@@ -255,7 +246,7 @@
   "order": [
     "image_banner",
     "collection_list_8RLnE8",
-    "featured_collection",
+    "all_categories_products",
     "featured_collection_new_drops",
     "customer_love",
     "image_with_text_ywzCxn"
