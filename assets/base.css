@@ -3943,10 +3943,9 @@ details-disclosure > details {
   border-radius: 4px !important;
 }
 
-/* 2. Color Swatches styling */
 .swatch-input__input:checked + .swatch-input__label {
   outline: 2px solid var(--color-brand-accent) !important;
-  outline-offset: 2px;
+  outline-offset: 2px !important;
 }
 
 .swatch-input__label {
@@ -3991,6 +3990,11 @@ details-disclosure > details {
   --color-swatch-navy: #000080;
   --color-swatch-gold: #ffd700;
   --color-swatch-silver: #c0c0c0;
+  --color-swatch-mind-001: #2a7f5a;
+  --color-swatch-mind-002: #1e2d3b;
+  --color-swatch-retro-4-snorlax-custom: linear-gradient(135deg, #2b4c59 50%, #f7ebd3 50%);
+  --color-swatch-black-white: linear-gradient(135deg, #000000 50%, #ffffff 50%);
+  --color-swatch-white-black: linear-gradient(135deg, #ffffff 50%, #000000 50%);
 }
 
 /* 3. Delivery Estimator Styling */

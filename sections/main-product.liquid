@@ -1691,24 +1691,28 @@
             const shippingMode = shippingSpeedVal === 'fast' ? 'Fast' : 'Normal';
             const productLink = window.location.href;
 
-            const waMessage = `Hello dynix.in! I'd like to place a Cash on Delivery order:\n` +
-              `- Product: ${prodName}\n` +
-              `- Variant: ${varName}\n` +
-              `- Subtotal: ${subtotal}\n` +
-              (isDiscountApplied ? `- Discount: ${discountVal}\n` : '') +
-              (appliedCoupon ? `- Coupon Code: ${appliedCoupon.code}\n` : '') +
-              `- Shipping Mode: ${shippingMode}\n` +
-              `- Shipping: ${shipping}\n` +
-              `- Total: ${total}\n` +
-              `- Product Link: ${productLink}\n\n` +
-              `Customer Details:\n` +
-              `- Name: ${name}\n` +
-              `- Phone: ${phone}\n` +
-              `- Address: ${address}\n` +
-              `- City: ${city}\n` +
-              `- State: ${state}\n` +
-              `- Pin Code: ${pincode}\n` +
-              `- Landmark: ${landmark || 'N/A'}`;
+            const waMessage = `*🛍️ NEW COD ORDER - DYNIX.IN*\n` +
+              `-----------------------------------------\n` +
+              `*📦 PRODUCT DETAILS*\n` +
+              `• *Product:* ${prodName}\n` +
+              `• *Variant:* ${varName}\n` +
+              `• *Product Link:* ${productLink}\n\n` +
+              `*💰 BILLING SUMMARY*\n` +
+              `• *Subtotal:* ${subtotal}\n` +
+              (isDiscountApplied ? `• *Discount:* ${discountVal}\n` : '') +
+              (appliedCoupon ? `• *Coupon:* ${appliedCoupon.code}\n` : '') +
+              `• *Shipping Mode:* ${shippingMode}\n` +
+              `• *Shipping Fee:* ${shipping}\n` +
+              `• *Total Amount:* ${total}\n\n` +
+              `*🚚 SHIPPING ADDRESS*\n` +
+              `• *Name:* ${name}\n` +
+              `• *Phone:* ${phone}\n` +
+              `• *Address:* ${address}\n` +
+              `• *City:* ${city}\n` +
+              `• *State:* ${state}\n` +
+              `• *Pincode:* ${pincode}\n` +
+              `• *Landmark:* ${landmark || 'N/A'}\n` +
+              `-----------------------------------------`;
 
             const waNumber = '918075356149';
             const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;

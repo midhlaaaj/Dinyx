@@ -98,7 +98,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    font-size: 2.6rem;
+    font-size: 2.0rem;
     display: inline-block;
     line-height: 1.2;
   }
@@ -1513,29 +1513,33 @@
           const itemPrice = (item.price / 100.0);
           const itemTotalPrice = itemPrice * item.quantity;
           const itemUrl = window.location.origin + item.url;
-          itemsText += `- Product ${index + 1}: ${item.product_title}${variantText} x ${item.quantity} = ${formatCartPrice(itemTotalPrice)}\n  Link: ${itemUrl}\n`;
+          itemsText += `• *Item ${index + 1}:* ${item.product_title}${variantText}\n  *Qty:* ${item.quantity} | *Price:* ${formatCartPrice(itemTotalPrice)}\n  *Link:* ${itemUrl}\n\n`;
         });
 
         const discountRow = document.getElementById('dinyx-cart-discount-row');
         const isDiscountApplied = discountRow && discountRow.style.display !== 'none';
         const discountVal = isDiscountApplied ? document.getElementById('dinyx-cart-discount').textContent.trim() : '';
 
-        const waMessage = `Hello dynix.in! I'd like to place a Cash on Delivery order for the following items:\n\n` +
-          `${itemsText}\n` +
-          `Subtotal: ${subtotalText}\n` +
-          (isDiscountApplied ? `- Discount: ${discountVal}\n` : '') +
-          (appliedCartCoupon ? `- Coupon Code: ${appliedCartCoupon.code}\n` : '') +
-          `Shipping Mode: ${shippingMode}\n` +
-          `Shipping (${shippingName}): ${shippingText}\n` +
-          `Total: ${totalText}\n\n` +
-          `Customer Details:\n` +
-          `- Name: ${name}\n` +
-          `- Phone: ${phone}\n` +
-          `- Address: ${address}\n` +
-          `- City: ${city}\n` +
-          `- State: ${state}\n` +
-          `- Pin Code: ${pincode}\n` +
-          `- Landmark: ${landmark || 'N/A'}`;
+        const waMessage = `*🛍️ NEW COD ORDER - DYNIX.IN*\n` +
+          `-----------------------------------------\n` +
+          `*📦 CART ITEMS*\n` +
+          `${itemsText}` +
+          `*💰 BILLING SUMMARY*\n` +
+          `• *Subtotal:* ${subtotalText}\n` +
+          (isDiscountApplied ? `• *Discount:* ${discountVal}\n` : '') +
+          (appliedCartCoupon ? `• *Coupon:* ${appliedCartCoupon.code}\n` : '') +
+          `• *Shipping Mode:* ${shippingMode}\n` +
+          `• *Shipping (${shippingName}):* ${shippingText}\n` +
+          `• *Total Amount:* ${totalText}\n\n` +
+          `*🚚 SHIPPING ADDRESS*\n` +
+          `• *Name:* ${name}\n` +
+          `• *Phone:* ${phone}\n` +
+          `• *Address:* ${address}\n` +
+          `• *City:* ${city}\n` +
+          `• *State:* ${state}\n` +
+          `• *Pincode:* ${pincode}\n` +
+          `• *Landmark:* ${landmark || 'N/A'}\n` +
+          `-----------------------------------------`;
 
         const waNumber = '918075356149';
         const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
