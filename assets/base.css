@@ -3714,21 +3714,21 @@ details-disclosure > details {
 
 /* 3. Shipping Speed Block Selector */
 .dinyx-shipping-speed {
-  margin: 2.2rem 0;
+  margin: 1.2rem 0;
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
-  padding: 1.8rem 0;
+  padding: 1rem 0;
 }
 
 .dinyx-shipping-speed__title-container {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 1.4rem;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
 }
 
 .dinyx-shipping-speed__title {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.08rem;
@@ -3744,14 +3744,14 @@ details-disclosure > details {
 .dinyx-shipping-speed__options {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.4rem;
-  margin-bottom: 1.4rem;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .dinyx-shipping-card {
   border: 1px solid #e5e5e5;
-  border-radius: 10px;
-  padding: 1.4rem 1.6rem;
+  border-radius: 8px;
+  padding: 0.8rem 1.1rem;
   cursor: pointer;
   position: relative;
   background-color: #ffffff;
@@ -3765,18 +3765,18 @@ details-disclosure > details {
 
 .dinyx-shipping-card.active {
   border: 2px solid #28a745;
-  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.08);
+  box-shadow: 0 3px 8px rgba(40, 167, 69, 0.08);
 }
 
 .dinyx-shipping-card__badge {
   position: absolute;
-  top: -10px;
-  left: 14px;
+  top: -8px;
+  left: 10px;
   background-color: #28a745;
   color: #ffffff;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.2rem 0.8rem;
+  padding: 0.1rem 0.6rem;
   border-radius: 20px;
   letter-spacing: 0.05rem;
 }
@@ -3785,21 +3785,21 @@ details-disclosure > details {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.2rem;
 }
 
 .dinyx-shipping-card__icon-text {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.4rem;
 }
 
 .dinyx-shipping-card__icon {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
 }
 
 .dinyx-shipping-card__name {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #333333;
 }
@@ -3812,8 +3812,8 @@ details-disclosure > details {
 .dinyx-shipping-card__check-circle {
   border: 2px solid #ccc;
   border-radius: 50%;
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   display: inline-block;
   position: relative;
   transition: all 0.2s;
@@ -3827,24 +3827,24 @@ details-disclosure > details {
 .dinyx-shipping-card.active .dinyx-shipping-card__check-circle::after {
   content: '';
   position: absolute;
-  left: 5px;
-  top: 2px;
-  width: 4px;
-  height: 8px;
+  left: 3px;
+  top: 1px;
+  width: 3px;
+  height: 6px;
   border: solid white;
-  border-width: 0 2px 2px 0;
+  border-width: 0 1.5px 1.5px 0;
   transform: rotate(45deg);
 }
 
 .dinyx-shipping-card__days {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #121212;
-  margin: 0.6rem 0;
+  margin: 0.4rem 0;
 }
 
 .dinyx-shipping-card__price {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: #666666;
   font-weight: 500;
 }
@@ -4211,3 +4211,44 @@ html.dinyx-scroll-lock {
 body.dinyx-modal-open .sticky-bottom-action-container {
   display: none !important;
 }
+
+/* 5. Custom Homepage Slider Override (Exactly 4 columns on Desktop, 2 columns on Mobile/Tablet) */
+@media screen and (min-width: 990px) {
+  slider-component:not(.slider-component-full-width).slider-component-desktop {
+    max-width: var(--page-width) !important;
+    margin: 0 auto !important;
+    padding: 0 5rem !important;
+  }
+  slider-component:not(.slider-component-full-width) {
+    --desktop-margin-left-first-item: 0rem !important;
+  }
+  slider-component:not(.slider-component-full-width) .slider--desktop.grid--4-col-desktop .grid__item {
+    width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4) !important;
+  }
+  slider-component:not(.slider-component-full-width) .slider--desktop .slider__slide:first-child {
+    margin-left: 0 !important;
+    scroll-margin-left: 0 !important;
+  }
+  slider-component:not(.slider-component-full-width) .slider--desktop:after {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  slider-component:not(.slider-component-full-width) .grid--peek .grid__item,
+  slider-component:not(.slider-component-full-width) .grid--peek.grid--2-col-tablet-down .grid__item {
+    width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2) !important;
+  }
+  slider-component:not(.slider-component-full-width) .slider--tablet.grid--peek .slider__slide:first-child {
+    margin-left: 0 !important;
+    scroll-margin-left: 0 !important;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  slider-component:not(.slider-component-full-width) .grid--peek .grid__item,
+  slider-component:not(.slider-component-full-width) .grid--peek.grid--2-col-tablet-down .grid__item {
+    width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
+  }
+}
+

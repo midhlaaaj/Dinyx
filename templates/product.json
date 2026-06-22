@@ -69,7 +69,7 @@
         "cod_checkout_form": {
           "type": "cod_checkout_form",
           "settings": {
-            "form_title": "Cash on Delivery Order Details",
+            "form_title": "Order Details Form",
             "whatsapp_number": "918075356149",
             "webhook_url": ""
           }
@@ -89,9 +89,9 @@
         "variant_picker",
         "quantity_selector",
         "description",
-        "custom_liquid_aq68A3",
-        "buy_buttons",
         "shipping_speed",
+        "buy_buttons",
+        "custom_liquid_aq68A3",
         "cod_checkout_form",
         "share"
       ],

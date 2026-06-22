@@ -341,7 +341,7 @@
         <h1 class="header__heading">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        <span class="dinyx-gradient-logo">Dinyx Drips</span>
+        <span class="dinyx-gradient-logo">dynix.in</span>
       </a>
       {%- if request.page_type == 'index' -%}
         </h1>
@@ -363,7 +363,7 @@
         <h1 class="header__heading">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        <span class="dinyx-gradient-logo">Dinyx Drips</span>
+        <span class="dinyx-gradient-logo">dynix.in</span>
       </a>
       {%- if request.page_type == 'index' -%}
         </h1>
@@ -1498,6 +1498,7 @@
         const activeCard = document.querySelector('.dinyx-cart-shipping-card.active');
         const isFast = activeCard && activeCard.getAttribute('data-type') === 'fast';
         const shippingName = isFast ? 'Fast Delivery' : 'Standard Delivery';
+        const shippingMode = isFast ? 'Fast' : 'Normal';
         const shippingVal = isFast ? {{ settings.fast_shipping_price | default: 199 }} : 0;
         const subtotalVal = currentCartData.total_price / 100.0;
         const totalVal = subtotalVal + shippingVal;
@@ -1511,18 +1512,20 @@
           const variantText = item.variant_title ? ` (${item.variant_title})` : '';
           const itemPrice = (item.price / 100.0);
           const itemTotalPrice = itemPrice * item.quantity;
-          itemsText += `- Product ${index + 1}: ${item.product_title}${variantText} x ${item.quantity} = ${formatCartPrice(itemTotalPrice)}\n`;
+          const itemUrl = window.location.origin + item.url;
+          itemsText += `- Product ${index + 1}: ${item.product_title}${variantText} x ${item.quantity} = ${formatCartPrice(itemTotalPrice)}\n  Link: ${itemUrl}\n`;
         });
 
         const discountRow = document.getElementById('dinyx-cart-discount-row');
         const isDiscountApplied = discountRow && discountRow.style.display !== 'none';
         const discountVal = isDiscountApplied ? document.getElementById('dinyx-cart-discount').textContent.trim() : '';
 
-        const waMessage = `Hello Dinyx Drips! I'd like to place a Cash on Delivery order for the following items:\n\n` +
+        const waMessage = `Hello dynix.in! I'd like to place a Cash on Delivery order for the following items:\n\n` +
           `${itemsText}\n` +
           `Subtotal: ${subtotalText}\n` +
           (isDiscountApplied ? `- Discount: ${discountVal}\n` : '') +
           (appliedCartCoupon ? `- Coupon Code: ${appliedCartCoupon.code}\n` : '') +
+          `Shipping Mode: ${shippingMode}\n` +
           `Shipping (${shippingName}): ${shippingText}\n` +
           `Total: ${totalText}\n\n` +
           `Customer Details:\n` +

@@ -104,8 +104,14 @@
 
         {%- if section.settings.collection.products.size > 0 -%}
           {% assign lazy_load = false %}
+          {%- liquid
+            assign products_array = section.settings.collection.products
+            if section.settings.sort_by == 'latest'
+              assign products_array = products_array | sort: 'published_at' | reverse
+            endif
+          -%}
           {% paginate section.settings.collection.products by section.settings.products_to_show %}
-            {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+            {%- for product in products_array limit: section.settings.products_to_show -%}
               {% if lazy_load == false and forloop.index > max_columns_to_show %}
                 {% assign lazy_load = true %}
               {% endif %}
@@ -163,6 +169,18 @@
           {%- endfor -%}
         {%- endif -%}
       </ul>
+      {%- if section.settings.sort_by == 'random' -%}
+        <script>
+          (function() {
+            const grid = document.getElementById('Slider-{{ section.id }}');
+            if (grid && grid.children.length > 1) {
+              const items = Array.from(grid.children);
+              items.sort(() => Math.random() - 0.5);
+              items.forEach(item => grid.appendChild(item));
+            }
+          })();
+        </script>
+      {%- endif -%}
       {%- if show_mobile_slider or show_desktop_slider -%}
         <div class="slider-buttons">
           <button
@@ -319,11 +337,31 @@
       "default": 4,
       "label": "t:sections.featured-collection.settings.columns_desktop.label"
     },
-        {
+    {
       "type": "checkbox",
       "id": "enable_desktop_slider",
       "label": "t:sections.featured-collection.settings.enable_desktop_slider.label",
       "default": false
+    },
+    {
+      "type": "select",
+      "id": "sort_by",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default collection order"
+        },
+        {
+          "value": "random",
+          "label": "Randomized"
+        },
+        {
+          "value": "latest",
+          "label": "Latest added"
+        }
+      ],
+      "default": "default",
+      "label": "Product Sort Order"
     },
     {
       "type": "checkbox",

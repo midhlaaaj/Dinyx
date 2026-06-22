@@ -1686,14 +1686,21 @@
             const isDiscountApplied = discountRow && discountRow.style.display !== 'none';
             const discountVal = isDiscountApplied ? document.getElementById('dinyx-cod-discount').textContent.trim() : '';
 
-            const waMessage = `Hello Dinyx Drips! I'd like to place a Cash on Delivery order:\n` +
+            const shippingSpeedSelect = document.getElementById('dinyx-cod-shipping-speed-select');
+            const shippingSpeedVal = shippingSpeedSelect ? shippingSpeedSelect.value : 'standard';
+            const shippingMode = shippingSpeedVal === 'fast' ? 'Fast' : 'Normal';
+            const productLink = window.location.href;
+
+            const waMessage = `Hello dynix.in! I'd like to place a Cash on Delivery order:\n` +
               `- Product: ${prodName}\n` +
               `- Variant: ${varName}\n` +
               `- Subtotal: ${subtotal}\n` +
               (isDiscountApplied ? `- Discount: ${discountVal}\n` : '') +
               (appliedCoupon ? `- Coupon Code: ${appliedCoupon.code}\n` : '') +
+              `- Shipping Mode: ${shippingMode}\n` +
               `- Shipping: ${shipping}\n` +
-              `- Total: ${total}\n\n` +
+              `- Total: ${total}\n` +
+              `- Product Link: ${productLink}\n\n` +
               `Customer Details:\n` +
               `- Name: ${name}\n` +
               `- Phone: ${phone}\n` +
@@ -1716,7 +1723,8 @@
               const modalOverlay = document.getElementById('dinyx-cod-modal-overlay');
               if (modalOverlay) {
                 modalOverlay.classList.remove('active');
-                document.body.style.overflow = '';
+                document.body.classList.remove('dinyx-modal-open', 'dinyx-scroll-lock');
+                document.documentElement.classList.remove('dinyx-scroll-lock');
               }
               setTimeout(() => {
                 form.classList.remove('hidden');
@@ -3217,7 +3225,7 @@
           "type": "text",
           "id": "form_title",
           "label": "Form Title",
-          "default": "Cash on Delivery Order Details"
+          "default": "Order Details Form"
         },
         {
           "type": "text",
