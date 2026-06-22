@@ -17,7 +17,7 @@
   endif
 -%}
 
-<div class="collection page-width" id="collection-{{ section.id }}-{{ collection.id }}" style="margin-bottom: 6rem;">
+<div class="collection page-width" id="collection-{{ section.id }}-{{ collection.id }}" style="margin-bottom: 6rem; padding-left: max(1.5rem, env(safe-area-inset-left)); padding-right: max(1.5rem, env(safe-area-inset-right));">
   <div class="collection__title title-wrapper title-wrapper--no-top-margin{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
     <h2 class="title inline-richtext {{ section.settings.heading_size }}">
       {{ collection.title | escape }}
@@ -84,12 +84,13 @@
     {%- endif -%}
   </slider-component>
 
-  {%- if section.settings.show_view_all and more_in_collection -%}
-    <div class="center collection__view-all" style="margin-top: 3rem;">
+  {%- if section.settings.show_view_all -%}
+    <div class="center collection__view-all" style="margin-top: 2rem; padding: 0 1.5rem;">
       <a
         href="{{ collection.url }}"
         class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
         aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: collection.title | escape }}"
+        style="width: 100%; max-width: 28rem; display: block; text-align: center;"
       >
         {{ 'sections.featured_collection.view_all' | t }}
       </a>
