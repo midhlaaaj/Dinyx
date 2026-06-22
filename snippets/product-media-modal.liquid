@@ -33,6 +33,20 @@
       tabindex="0"
     >
       {%- liquid
+        assign selected_color = nil
+        assign color_options = nil
+        for option in product.options_with_values
+          assign downcased_option_name = option.name | downcase
+          if downcased_option_name == 'color' or downcased_option_name == 'colour'
+            assign option_index = forloop.index0
+            assign selected_color = product.selected_or_first_available_variant.options[option_index]
+            assign color_options = option.values
+            break
+          endif
+        endfor
+      -%}
+
+      {%- liquid
         if product.selected_or_first_available_variant.featured_media != null
           assign media = product.selected_or_first_available_variant.featured_media
           render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants
@@ -40,6 +54,24 @@
       -%}
 
       {%- for media in product.media -%}
+        {%- liquid
+          assign media_alt_downcase = media.alt | downcase | strip
+          assign show_media = true
+          if selected_color != nil
+            assign selected_color_downcase = selected_color | downcase | strip
+            for color in color_options
+              assign color_downcase = color | downcase | strip
+              if media_alt_downcase == color_downcase and media_alt_downcase != selected_color_downcase
+                assign show_media = false
+                break
+              endif
+            endfor
+          endif
+        -%}
+        {%- unless show_media -%}
+          {%- continue -%}
+        {%- endunless -%}
+
         {%- liquid
           if section.settings.hide_variants and variant_images contains media.src or variant_images contains media.id
             assign variant_image = true

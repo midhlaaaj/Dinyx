@@ -500,8 +500,9 @@
 
 @media screen and (max-width: 749px) {
   .banner {
-    height: calc(100vh - var(--header-height, 80px)) !important;
-    min-height: calc(100vh - var(--header-height, 80px)) !important;
+    height: auto !important;
+    min-height: auto !important;
+    aspect-ratio: 1440 / 780 !important;
   }
 }
 
