@@ -14,6 +14,12 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  @media screen and (max-width: 749px) {
+    .grid--3-col-tablet-down .grid__item {
+      width: calc(33.33% - var(--grid-mobile-horizontal-spacing) * 2 / 3);
+    }
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -50,7 +56,7 @@
 
     <slider-component class="slider-mobile-gutter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <ul
-        class="collection-list contains-card contains-card--collection{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down{% if section.settings.swipe_on_mobile %} slider slider--tablet grid--peek{% endif %} collection-list--{{ section.blocks.size }}-items"
+        class="collection-list contains-card contains-card--collection{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down{% if section.settings.swipe_on_mobile %} slider slider--tablet{% endif %} collection-list--{{ section.blocks.size }}-items"
         id="Slider-{{ section.id }}"
         role="list"
       >
@@ -239,6 +245,10 @@
         {
           "value": "2",
           "label": "t:sections.collection-list.settings.columns_mobile.options__2.label"
+        },
+        {
+          "value": "3",
+          "label": "3 columns"
         }
       ],
       "default": "1",
