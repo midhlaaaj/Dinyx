@@ -127,7 +127,7 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
+        "swipe_on_mobile": true,
         "sort_by": "latest",
         "padding_top": 44,
         "padding_bottom": 36
@@ -245,9 +245,9 @@
   },
   "order": [
     "image_banner",
-    "collection_list_8RLnE8",
-    "all_categories_products",
     "featured_collection_new_drops",
+    "all_categories_products",
+    "collection_list_8RLnE8",
     "customer_love",
     "image_with_text_ywzCxn"
   ]

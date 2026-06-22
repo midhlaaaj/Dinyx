@@ -1,5 +1,6 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -16,54 +17,49 @@
   }
 {%- endstyle -%}
 
+{%- liquid
+  assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+  assign columns_desktop_int = section.settings.columns_desktop | plus: 0
+
+  assign shoes_collection = nil
+  for col in collections
+    assign col_handle_down = col.handle | downcase
+    assign col_title_down = col.title | downcase
+    if col_handle_down == 'shoes' or col_title_down == 'shoes' or col_title_down contains 'shoes'
+      assign shoes_collection = col
+      break
+    endif
+  endfor
+-%}
+
 <div class="color-{{ section.settings.color_scheme }} isolate gradient">
-  <div class="section-{{ section.id }}-padding page-width">
+  <div class="section-{{ section.id }}-padding">
+    {%- comment -%} 1. Render Shoes collection first {%- endcomment -%}
+    {%- if shoes_collection != nil and shoes_collection.all_products_count > 0 -%}
+      {%- render 'category-slider-item', 
+        collection: shoes_collection, 
+        section: section, 
+        columns_mobile_int: columns_mobile_int, 
+        columns_desktop_int: columns_desktop_int 
+      -%}
+    {%- endif -%}
+
+    {%- comment -%} 2. Render the rest of the collections {%- endcomment -%}
     {%- for collection in collections -%}
       {%- if collection.handle == 'all' or collection.handle == 'frontpage' or collection.handle == 'best-seller' -%}
         {%- continue -%}
       {%- endif -%}
+      {%- if shoes_collection != nil and collection.handle == shoes_collection.handle -%}
+        {%- continue -%}
+      {%- endif -%}
 
       {%- if collection.all_products_count > 0 -%}
-        <div class="collection-category-section" style="margin-bottom: 6rem;">
-          <div class="collection__title title-wrapper title-wrapper--no-top-margin">
-            <h2 class="title inline-richtext {{ section.settings.heading_size }}">
-              {{ collection.title | escape }}
-            </h2>
-          </div>
-
-          <ul
-            class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
-            role="list"
-          >
-            {%- for product in collection.products limit: section.settings.products_to_show -%}
-              <li class="grid__item">
-                {% render 'card-product',
-                  card_product: product,
-                  media_aspect_ratio: section.settings.image_ratio,
-                  image_shape: section.settings.image_shape,
-                  lazy_load: true,
-                  show_secondary_image: section.settings.show_secondary_image,
-                  show_vendor: section.settings.show_vendor,
-                  show_rating: section.settings.show_rating,
-                  section_id: section.id,
-                  quick_add: section.settings.quick_add
-                %}
-              </li>
-            {%- endfor -%}
-          </ul>
-
-          {%- if section.settings.show_view_all and collection.all_products_count > section.settings.products_to_show -%}
-            <div class="center collection__view-all" style="margin-top: 3rem;">
-              <a
-                href="{{ collection.url }}"
-                class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
-                aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: collection.title | escape }}"
-              >
-                {{ 'sections.featured_collection.view_all' | t }}
-              </a>
-            </div>
-          {%- endif -%}
-        </div>
+        {%- render 'category-slider-item', 
+          collection: collection, 
+          section: section, 
+          columns_mobile_int: columns_mobile_int, 
+          columns_desktop_int: columns_desktop_int 
+        -%}
       {%- endif -%}
     {%- endfor -%}
   </div>
@@ -84,7 +80,7 @@
       "min": 2,
       "max": 25,
       "step": 1,
-      "default": 4,
+      "default": 8,
       "label": "Products to show per category"
     },
     {
@@ -123,6 +119,12 @@
       "step": 1,
       "default": 4,
       "label": "t:sections.featured-collection.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_desktop_slider",
+      "label": "t:sections.featured-collection.settings.enable_desktop_slider.label",
+      "default": true
     },
     {
       "type": "checkbox",
@@ -223,7 +225,7 @@
     {
       "type": "checkbox",
       "id": "show_secondary_image",
-      "default": false,
+      "default": true,
       "label": "t:sections.featured-collection.settings.show_secondary_image.label"
     },
     {
@@ -277,6 +279,12 @@
           "label": "t:sections.featured-collection.settings.columns_mobile.options__2.label"
         }
       ]
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe_on_mobile",
+      "default": true,
+      "label": "t:sections.featured-collection.settings.swipe_on_mobile.label"
     },
     {
       "type": "header",
