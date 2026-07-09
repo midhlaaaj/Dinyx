@@ -134,7 +134,7 @@
     "fast_shipping_days_min": 4,
     "fast_shipping_days_max": 5,
     "standard_shipping_days_min": 7,
-    "standard_shipping_days_max": 12,
+    "standard_shipping_days_max": 10,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
