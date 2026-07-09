@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -107,6 +116,7 @@
         "description_style": "body",
         "columns_desktop": 4,
         "enable_desktop_slider": true,
+        "sort_by": "latest",
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
@@ -119,7 +129,6 @@
         "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "sort_by": "latest",
         "padding_top": 44,
         "padding_bottom": 36
       }
@@ -143,6 +152,52 @@
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "customer_love": {
+      "type": "customer-love",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-07-09-17-26-00-27_7352322957d4404136654ef4adb64504.jpg",
+            "author_name": "Rohan P.",
+            "rating": "5",
+            "text": "Shoes are awesome, bro! 🔥\n\nReally comfortable and the quality is excellent.\n\nThanks, Dinyx Drips! 🙌"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/6231074223476642246.jpg",
+            "author_name": "Arjun S.",
+            "rating": "5",
+            "text": "Nice"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/6231074223476642245.jpg",
+            "author_name": "Vivek M.",
+            "rating": "5",
+            "text": "Packaging 10/10 ✅ Delivered in just 3 days!"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
+      "settings": {
+        "title": "CUSTOMER LOVE",
+        "heading_size": "h1",
+        "see_all_link": "",
+        "see_all_text": "See all",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
         "padding_bottom": 36
       }
     },
@@ -189,47 +244,6 @@
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "left",
         "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "customer_love": {
-      "type": "customer-love",
-      "blocks": {
-        "review_1": {
-          "type": "review",
-          "settings": {
-            "author_name": "Rohan P.",
-            "rating": "5",
-            "text": "Bhai shoes mast hai 🔥 Comfortable bhi hai. Delivery bhi fast thi. Thanks Dinyx 🙏"
-          }
-        },
-        "review_2": {
-          "type": "review",
-          "settings": {
-            "author_name": "Arjun S.",
-            "rating": "5",
-            "text": "Bhai shoes mast hai 🔥 Comfortable bhi hai. Delivery bhi fast thi. Thanks Dinyx"
-          }
-        },
-        "review_3": {
-          "type": "review",
-          "settings": {
-            "author_name": "Vivek M.",
-            "rating": "5",
-            "text": "Packaging 10/10 ✅ Delivered in just 3 days!"
-          }
-        }
-      },
-      "block_order": [
-        "review_1",
-        "review_2",
-        "review_3"
-      ],
-      "settings": {
-        "title": "CUSTOMER LOVE",
-        "heading_size": "h1",
         "color_scheme": "scheme-1",
         "padding_top": 36,
         "padding_bottom": 36
