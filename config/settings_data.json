@@ -131,7 +131,7 @@
     "coupon_code_1": "Fin",
     "coupon_value_1": 300,
     "fast_shipping_price": 199,
-    "fast_shipping_days_min": 4,
+    "fast_shipping_days_min": 3,
     "fast_shipping_days_max": 5,
     "standard_shipping_days_min": 7,
     "standard_shipping_days_max": 10,
