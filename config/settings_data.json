@@ -132,9 +132,9 @@
     "coupon_value_1": 300,
     "fast_shipping_price": 199,
     "fast_shipping_days_min": 3,
-    "fast_shipping_days_max": 5,
-    "standard_shipping_days_min": 7,
-    "standard_shipping_days_max": 9,
+    "fast_shipping_days_max": 4,
+    "standard_shipping_days_min": 6,
+    "standard_shipping_days_max": 8,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
