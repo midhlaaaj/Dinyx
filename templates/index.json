@@ -222,7 +222,7 @@
           "type": "button",
           "settings": {
             "button_label": "SHOP",
-            "button_link": "shopify://collections/drips",
+            "button_link": "shopify://collections/all",
             "button_style_secondary": false
           }
         }
