@@ -109,7 +109,7 @@
       "settings": {
         "collection": "best-seller",
         "products_to_show": 8,
-        "title": "NEW DROPS",
+        "title": "BESTSELLER",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
