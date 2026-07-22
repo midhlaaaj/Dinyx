@@ -130,7 +130,7 @@
     "cart_color_scheme": "scheme-1",
     "coupon_code_1": "Fin",
     "coupon_value_1": 300,
-    "fast_shipping_price": 199,
+    "fast_shipping_price": 0,
     "fast_shipping_days_min": 3,
     "fast_shipping_days_max": 4,
     "standard_shipping_days_min": 6,
